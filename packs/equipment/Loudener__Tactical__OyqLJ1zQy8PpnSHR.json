@@ -1,6 +1,6 @@
 {
   "_id": "OyqLJ1zQy8PpnSHR",
-  "folder": null,
+  "folder": "FXAwjlhIDFMRlnQ6",
   "img": "systems/sf2e/icons/abilities/blue-energy-pulse.webp",
   "name": "Loudener (Tactical)",
   "system": {
@@ -106,6 +106,6 @@
     "AU1j8tJgRKJzaB89": 3
   },
   "flags": {},
-  "sort": 300000,
+  "sort": 1400000,
   "_key": "!items!OyqLJ1zQy8PpnSHR"
 }

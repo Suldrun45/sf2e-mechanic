@@ -1,6 +1,6 @@
 {
   "_id": "0Hdg9aWMIYVGjvj0",
-  "folder": null,
+  "folder": "FXAwjlhIDFMRlnQ6",
   "img": "systems/sf2e/icons/abilities/blue-energy-streak.webp",
   "name": "Shock Module (Commercial)",
   "system": {
@@ -107,6 +107,6 @@
     "AU1j8tJgRKJzaB89": 3
   },
   "flags": {},
-  "sort": 500000,
+  "sort": 1600000,
   "_key": "!items!0Hdg9aWMIYVGjvj0"
 }

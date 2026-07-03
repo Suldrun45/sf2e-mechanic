@@ -1,6 +1,6 @@
 {
   "_id": "JGbmqiZS3kurgKFu",
-  "folder": null,
+  "folder": "FXAwjlhIDFMRlnQ6",
   "img": "systems/sf2e/icons/abilities/purple-energy-thrusters.webp",
   "name": "Entropic Destabilizer (Commercial)",
   "system": {
@@ -113,6 +113,6 @@
     "AU1j8tJgRKJzaB89": 3
   },
   "flags": {},
-  "sort": 1700000,
+  "sort": 100000,
   "_key": "!items!JGbmqiZS3kurgKFu"
 }

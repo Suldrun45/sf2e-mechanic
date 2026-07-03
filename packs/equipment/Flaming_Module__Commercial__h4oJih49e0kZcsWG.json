@@ -1,6 +1,6 @@
 {
   "_id": "h4oJih49e0kZcsWG",
-  "folder": null,
+  "folder": "FXAwjlhIDFMRlnQ6",
   "img": "systems/sf2e/icons/abilities/red-fire-furnace.webp",
   "name": "Flaming Module (Commercial)",
   "system": {
@@ -107,6 +107,6 @@
     "AU1j8tJgRKJzaB89": 3
   },
   "flags": {},
-  "sort": 1600000,
+  "sort": 600000,
   "_key": "!items!h4oJih49e0kZcsWG"
 }

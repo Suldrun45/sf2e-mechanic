@@ -1,6 +1,6 @@
 {
   "_id": "5esAuSMPfXOGd0P2",
-  "folder": null,
+  "folder": "FXAwjlhIDFMRlnQ6",
   "img": "systems/sf2e/icons/abilities/cosmic-eye.webp",
   "name": "Fear Projector (Tactical)",
   "system": {
@@ -102,6 +102,6 @@
     "AU1j8tJgRKJzaB89": 3
   },
   "flags": {},
-  "sort": 1400000,
+  "sort": 400000,
   "_key": "!items!5esAuSMPfXOGd0P2"
 }

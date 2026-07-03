@@ -1,6 +1,6 @@
 {
   "_id": "tMVTprjg28EEYqz9",
-  "folder": null,
+  "folder": "FXAwjlhIDFMRlnQ6",
   "img": "systems/sf2e/icons/abilities/blue-energy-pulse.webp",
   "name": "Loudener (Commercial)",
   "system": {
@@ -106,6 +106,6 @@
     "AU1j8tJgRKJzaB89": 3
   },
   "flags": {},
-  "sort": 100000,
+  "sort": 1300000,
   "_key": "!items!tMVTprjg28EEYqz9"
 }

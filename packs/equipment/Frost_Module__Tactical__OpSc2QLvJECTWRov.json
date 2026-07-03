@@ -1,6 +1,6 @@
 {
   "_id": "OpSc2QLvJECTWRov",
-  "folder": null,
+  "folder": "FXAwjlhIDFMRlnQ6",
   "img": "systems/sf2e/icons/abilities/blue-snowflake-insignia.webp",
   "name": "Frost Module (Tactical)",
   "system": {
@@ -107,6 +107,6 @@
     "AU1j8tJgRKJzaB89": 3
   },
   "flags": {},
-  "sort": 1100000,
+  "sort": 900000,
   "_key": "!items!OpSc2QLvJECTWRov"
 }

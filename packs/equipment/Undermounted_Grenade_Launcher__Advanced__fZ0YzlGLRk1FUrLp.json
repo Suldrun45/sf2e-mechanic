@@ -1,6 +1,6 @@
 {
   "_id": "fZ0YzlGLRk1FUrLp",
-  "folder": null,
+  "folder": "FXAwjlhIDFMRlnQ6",
   "img": "systems/sf2e/icons/abilities/red-bullets-in-flight.webp",
   "name": "Undermounted Grenade Launcher (Advanced)",
   "system": {
@@ -88,6 +88,6 @@
     "AU1j8tJgRKJzaB89": 3
   },
   "flags": {},
-  "sort": 0,
+  "sort": 150000,
   "_key": "!items!fZ0YzlGLRk1FUrLp"
 }

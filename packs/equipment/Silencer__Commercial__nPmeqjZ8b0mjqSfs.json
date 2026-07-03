@@ -1,6 +1,6 @@
 {
   "_id": "nPmeqjZ8b0mjqSfs",
-  "folder": null,
+  "folder": "FXAwjlhIDFMRlnQ6",
   "img": "systems/sf2e/icons/equipment/consumables/other-consumables/silencer.webp",
   "name": "Silencer (Commercial)",
   "system": {
@@ -88,6 +88,6 @@
     "AU1j8tJgRKJzaB89": 3
   },
   "flags": {},
-  "sort": 700000,
+  "sort": 1800000,
   "_key": "!items!nPmeqjZ8b0mjqSfs"
 }

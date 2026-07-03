@@ -1,6 +1,6 @@
 {
   "_id": "CcN2GgKeeau0IUJk",
-  "folder": null,
+  "folder": "FXAwjlhIDFMRlnQ6",
   "img": "systems/sf2e/icons/abilities/blue-snowflake-insignia.webp",
   "name": "Frost Module (Commercial)",
   "system": {
@@ -107,6 +107,6 @@
     "AU1j8tJgRKJzaB89": 3
   },
   "flags": {},
-  "sort": 900000,
+  "sort": 800000,
   "_key": "!items!CcN2GgKeeau0IUJk"
 }

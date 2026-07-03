@@ -1,6 +1,6 @@
 {
   "_id": "nl4tBzrHddJgpgbs",
-  "folder": null,
+  "folder": "FXAwjlhIDFMRlnQ6",
   "img": "systems/sf2e/icons/abilities/blue-energy-streak.webp",
   "name": "Shock Module (Tactical)",
   "system": {
@@ -122,6 +122,6 @@
     "AU1j8tJgRKJzaB89": 3
   },
   "flags": {},
-  "sort": 600000,
+  "sort": 1700000,
   "_key": "!items!nl4tBzrHddJgpgbs"
 }

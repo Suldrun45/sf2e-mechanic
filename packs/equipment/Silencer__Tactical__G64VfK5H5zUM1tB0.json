@@ -1,6 +1,6 @@
 {
   "_id": "G64VfK5H5zUM1tB0",
-  "folder": null,
+  "folder": "FXAwjlhIDFMRlnQ6",
   "img": "systems/sf2e/icons/equipment/consumables/other-consumables/silencer.webp",
   "name": "Silencer (Tactical)",
   "system": {
@@ -102,6 +102,6 @@
     "AU1j8tJgRKJzaB89": 3
   },
   "flags": {},
-  "sort": 800000,
+  "sort": 1900000,
   "_key": "!items!G64VfK5H5zUM1tB0"
 }

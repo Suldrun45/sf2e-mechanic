@@ -1,6 +1,6 @@
 {
   "_id": "TgJMTB1ub5Eh4xJO",
-  "folder": null,
+  "folder": "FXAwjlhIDFMRlnQ6",
   "img": "systems/sf2e/icons/abilities/blue-piercing-energy.webp",
   "name": "Ghost Killer",
   "system": {
@@ -99,6 +99,6 @@
     "AU1j8tJgRKJzaB89": 3
   },
   "flags": {},
-  "sort": 1200000,
+  "sort": 1000000,
   "_key": "!items!TgJMTB1ub5Eh4xJO"
 }

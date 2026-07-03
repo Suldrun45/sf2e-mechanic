@@ -1,6 +1,6 @@
 {
   "_id": "he1AD9ck10fLSvWn",
-  "folder": null,
+  "folder": "FXAwjlhIDFMRlnQ6",
   "img": "systems/sf2e/icons/abilities/yellow-energy-burst.webp",
   "name": "Holy Module (Commercial)",
   "system": {
@@ -124,6 +124,6 @@
     "AU1j8tJgRKJzaB89": 3
   },
   "flags": {},
-  "sort": 1300000,
+  "sort": 1100000,
   "_key": "!items!he1AD9ck10fLSvWn"
 }

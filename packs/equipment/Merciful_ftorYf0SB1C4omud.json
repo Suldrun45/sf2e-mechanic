@@ -1,6 +1,6 @@
 {
   "_id": "ftorYf0SB1C4omud",
-  "folder": null,
+  "folder": "FXAwjlhIDFMRlnQ6",
   "img": "systems/sf2e/icons/abilities/green-flame-burner.webp",
   "name": "Merciful",
   "system": {
@@ -108,6 +108,6 @@
     "AU1j8tJgRKJzaB89": 3
   },
   "flags": {},
-  "sort": 400000,
+  "sort": 1500000,
   "_key": "!items!ftorYf0SB1C4omud"
 }

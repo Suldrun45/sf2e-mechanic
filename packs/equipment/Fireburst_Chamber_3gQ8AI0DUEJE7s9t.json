@@ -1,6 +1,6 @@
 {
   "_id": "3gQ8AI0DUEJE7s9t",
-  "folder": null,
+  "folder": "FXAwjlhIDFMRlnQ6",
   "img": "systems/sf2e/icons/abilities/yellow-explosion.webp",
   "name": "Fireburst Chamber",
   "system": {
@@ -117,6 +117,6 @@
     "AU1j8tJgRKJzaB89": 3
   },
   "flags": {},
-  "sort": 200000,
+  "sort": 500000,
   "_key": "!items!3gQ8AI0DUEJE7s9t"
 }

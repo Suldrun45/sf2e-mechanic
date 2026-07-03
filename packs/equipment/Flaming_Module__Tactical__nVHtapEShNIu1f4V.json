@@ -1,6 +1,6 @@
 {
   "_id": "nVHtapEShNIu1f4V",
-  "folder": null,
+  "folder": "FXAwjlhIDFMRlnQ6",
   "img": "systems/sf2e/icons/abilities/red-fire-furnace.webp",
   "name": "Flaming Module (Tactical)",
   "system": {
@@ -107,6 +107,6 @@
     "AU1j8tJgRKJzaB89": 3
   },
   "flags": {},
-  "sort": 1500000,
+  "sort": 700000,
   "_key": "!items!nVHtapEShNIu1f4V"
 }

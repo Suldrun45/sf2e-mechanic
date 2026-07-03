@@ -1,6 +1,6 @@
 {
   "_id": "XJEqTuohpEGkHQAt",
-  "folder": null,
+  "folder": "FXAwjlhIDFMRlnQ6",
   "img": "systems/sf2e/icons/abilities/yellow-energy-burst.webp",
   "name": "Holy Module (Tactical)",
   "system": {
@@ -121,6 +121,6 @@
     "AU1j8tJgRKJzaB89": 3
   },
   "flags": {},
-  "sort": 1000000,
+  "sort": 1200000,
   "_key": "!items!XJEqTuohpEGkHQAt"
 }

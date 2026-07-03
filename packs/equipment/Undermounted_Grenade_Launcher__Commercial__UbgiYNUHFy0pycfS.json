@@ -1,6 +1,6 @@
 {
   "_id": "UbgiYNUHFy0pycfS",
-  "folder": null,
+  "folder": "FXAwjlhIDFMRlnQ6",
   "img": "systems/sf2e/icons/abilities/red-bullets-in-flight.webp",
   "name": "Undermounted Grenade Launcher (Commercial)",
   "system": {
@@ -88,6 +88,6 @@
     "AU1j8tJgRKJzaB89": 3
   },
   "flags": {},
-  "sort": 550000,
+  "sort": 2000000,
   "_key": "!items!UbgiYNUHFy0pycfS"
 }
