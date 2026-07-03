@@ -59,9 +59,9 @@
       "value": 5
     },
     "duration": {
-      "value": -1,
-      "unit": "unlimited",
-      "expiry": null,
+      "value": 1,
+      "unit": "rounds",
+      "expiry": "turn-start",
       "sustained": false
     },
     "tokenIcon": {
