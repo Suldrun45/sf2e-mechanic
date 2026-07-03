@@ -1,0 +1,69 @@
+{
+  "folder": "zBMJghDwgChKxdNm",
+  "name": "Smart Mine",
+  "type": "effect",
+  "effects": [],
+  "system": {
+    "description": {
+      "gm": "",
+      "value": "<p>Mine exocortex</p><hr><p>You program your mines with rudimentary virtual intelligence, allowing them to avoid damaging specific targets. Select one target within 60 feet. That target is excluded from the area of all mines you detonate. At 5th level, you can instead select two targets.</p>"
+    },
+    "rules": [],
+    "slug": null,
+    "_migration": {
+      "version": 0.959,
+      "previous": {
+        "schema": 0.955,
+        "foundry": "14.361",
+        "system": "8.1.2"
+      }
+    },
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "level": {
+      "value": 1
+    },
+    "duration": {
+      "value": 1,
+      "unit": "rounds",
+      "expiry": "turn-start",
+      "sustained": false
+    },
+    "start": {
+      "value": 0,
+      "initiative": null
+    },
+    "tokenIcon": {
+      "show": true
+    },
+    "badge": null,
+    "context": null,
+    "unidentified": false,
+    "fromSpell": false
+  },
+  "_id": "URykFXhGVC3HzMt2",
+  "img": "systems/pf2e/icons/default-icons/effect.svg",
+  "ownership": {
+    "default": 0,
+    "AU1j8tJgRKJzaB89": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "exportSource": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "sort": 300000,
+  "_key": "!items!URykFXhGVC3HzMt2"
+}

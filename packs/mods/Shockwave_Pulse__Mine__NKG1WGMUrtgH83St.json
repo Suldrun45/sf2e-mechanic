@@ -1,0 +1,74 @@
+{
+  "folder": "zBMJghDwgChKxdNm",
+  "name": "Shockwave Pulse (Mine)",
+  "type": "effect",
+  "effects": [],
+  "system": {
+    "_migration": {
+      "version": 0.959,
+      "previous": null
+    },
+    "description": {
+      "value": "<p>grenade, weapon</p><hr><p>The item releases a pulse of force upon use. If the item has the area trait, all creatures who fail their save against the item are additionally knocked @UUID[Compendium.sf2e.conditions.Item.j91X7x0XSomq8d60]{prone}. Otherwise, a creature damaged by the item is knocked prone unless they succeed at a @Check[fortitude|dc:resolve(@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level + 10)] save against your class DC.</p>",
+      "gm": ""
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "rules": [
+      {
+        "key": "Note",
+        "text": "A creature damaged by the item is knocked prone unless they succeed at a @Check[fortitude|dc:resolve(@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level + 10)] save against your class DC.",
+        "title": "Shockwave Pulse",
+        "selector": [
+          "detonate-mine-inline-damage"
+        ]
+      }
+    ],
+    "slug": null,
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "level": {
+      "value": 1
+    },
+    "duration": {
+      "value": -1,
+      "unit": "unlimited",
+      "expiry": null,
+      "sustained": false
+    },
+    "tokenIcon": {
+      "show": true
+    },
+    "unidentified": false,
+    "start": {
+      "value": 0,
+      "initiative": null
+    },
+    "badge": null,
+    "fromSpell": false,
+    "context": null
+  },
+  "_id": "NKG1WGMUrtgH83St",
+  "img": "systems/sf2e/icons/default-icons/effect.svg",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "AU1j8tJgRKJzaB89": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!NKG1WGMUrtgH83St"
+}

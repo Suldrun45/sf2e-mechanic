@@ -1,0 +1,111 @@
+{
+  "_id": "tMVTprjg28EEYqz9",
+  "folder": null,
+  "img": "systems/sf2e/icons/abilities/blue-energy-pulse.webp",
+  "name": "Loudener (Commercial)",
+  "system": {
+    "description": {
+      "gm": "",
+      "value": "<p>This specialized cone is installed over the muzzle or hilt of a weapon to use pneumonic pulses and passive acoustics to increase the volume of its attacks. It deals an extra 1d6 sonic damage. On a critical hit, the target must succeed at a @Check[fortitude|dc:24] save or be @UUID[Compendium.sf2e.conditions.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute (or 1 hour on a critical failure).</p>"
+    },
+    "rules": [
+      {
+        "damageType": "sonic",
+        "diceNumber": 1,
+        "dieSize": "d6",
+        "key": "DamageDice",
+        "selector": "turret-weapon-damage"
+      },
+      {
+        "key": "Note",
+        "outcome": [
+          "criticalSuccess"
+        ],
+        "selector": "turret-weapon-damage",
+        "text": "SF2E.SpecificRule.Equipment.Upgrades.Weapon.Loudener.CriticalNoteCommercial",
+        "title": "SF2E.SpecificRule.Equipment.Upgrades.Weapon.Loudener.LabelCommercial"
+      }
+    ],
+    "slug": "loudener-commercial",
+    "_migration": {
+      "version": 0.959,
+      "lastMigration": null,
+      "previous": null
+    },
+    "traits": {
+      "otherTags": [],
+      "value": [
+        "sonic",
+        "tech"
+      ],
+      "rarity": "common"
+    },
+    "publication": {
+      "title": "Starfinder Player Core",
+      "authors": "",
+      "license": "ORC",
+      "remaster": true
+    },
+    "level": {
+      "value": 8
+    },
+    "quantity": 1,
+    "baseItem": null,
+    "bulk": {
+      "value": 0
+    },
+    "hp": {
+      "value": 0,
+      "max": 0
+    },
+    "hardness": 0,
+    "price": {
+      "value": {
+        "sp": 5000
+      }
+    },
+    "equipped": {
+      "carryType": "worn",
+      "invested": null
+    },
+    "containerId": null,
+    "size": "med",
+    "material": {
+      "type": null,
+      "grade": null
+    },
+    "identification": {
+      "status": "identified",
+      "unidentified": {
+        "name": "Unusual Object",
+        "img": "systems/sf2e/icons/abilities/blue-energy-pulse.webp",
+        "data": {
+          "description": {
+            "value": ""
+          }
+        }
+      }
+    },
+    "usage": {
+      "value": "other"
+    },
+    "subitems": []
+  },
+  "type": "equipment",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "exportSource": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0,
+    "AU1j8tJgRKJzaB89": 3
+  },
+  "flags": {},
+  "sort": 100000,
+  "_key": "!items!tMVTprjg28EEYqz9"
+}

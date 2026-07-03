@@ -1,0 +1,127 @@
+{
+  "_id": "nl4tBzrHddJgpgbs",
+  "folder": null,
+  "img": "systems/sf2e/icons/abilities/blue-energy-streak.webp",
+  "name": "Shock Module (Tactical)",
+  "system": {
+    "description": {
+      "gm": "",
+      "value": "<p>This circuit safely courses electricity through your weapon. It deals an extra 1d6 electricity damage. On a critical hit, this increases to 2d10 electricity damage, and electricity arcs out to deal an equal amount of electricity damage to up to two other creatures of your choice within 10 feet of the target.</p>\n<p>Electricity damage dealt by this weapon ignores the target's electricity resistance (and the other creatures' on a critical hit).</p>"
+    },
+    "rules": [
+      {
+        "critical": false,
+        "damageType": "electricity",
+        "diceNumber": 1,
+        "dieSize": "d6",
+        "key": "DamageDice",
+        "outcome": "success",
+        "predicate": [
+          {
+            "not": "check:outcome:critical-success"
+          }
+        ],
+        "selector": "turret-weapon-damage"
+      },
+      {
+        "critical": true,
+        "damageType": "electricity",
+        "diceNumber": 2,
+        "dieSize": "d10",
+        "key": "DamageDice",
+        "selector": "turret-weapon-damage"
+      },
+      {
+        "key": "Note",
+        "outcome": [
+          "criticalSuccess"
+        ],
+        "selector": "turret-weapon-damage",
+        "text": "SF2E.SpecificRule.Equipment.Upgrades.Weapon.ShockModule.CriticalNote",
+        "title": "SF2E.SpecificRule.Equipment.Upgrades.Weapon.ShockModule.LabelTactical"
+      }
+    ],
+    "slug": "shock-module-tactical",
+    "_migration": {
+      "version": 0.959,
+      "lastMigration": null,
+      "previous": null
+    },
+    "traits": {
+      "otherTags": [],
+      "value": [
+        "electricity",
+        "magical",
+        "tech"
+      ],
+      "rarity": "common"
+    },
+    "publication": {
+      "title": "Starfinder Player Core",
+      "authors": "",
+      "license": "ORC",
+      "remaster": true
+    },
+    "level": {
+      "value": 15
+    },
+    "quantity": 1,
+    "baseItem": null,
+    "bulk": {
+      "value": 0
+    },
+    "hp": {
+      "value": 0,
+      "max": 0
+    },
+    "hardness": 0,
+    "price": {
+      "value": {
+        "sp": 65000
+      }
+    },
+    "equipped": {
+      "carryType": "worn",
+      "invested": null
+    },
+    "containerId": null,
+    "size": "med",
+    "material": {
+      "type": null,
+      "grade": null
+    },
+    "identification": {
+      "status": "identified",
+      "unidentified": {
+        "name": "Unusual Object",
+        "img": "systems/sf2e/icons/abilities/blue-energy-streak.webp",
+        "data": {
+          "description": {
+            "value": ""
+          }
+        }
+      }
+    },
+    "usage": {
+      "value": "other"
+    },
+    "subitems": []
+  },
+  "type": "equipment",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "exportSource": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0,
+    "AU1j8tJgRKJzaB89": 3
+  },
+  "flags": {},
+  "sort": 600000,
+  "_key": "!items!nl4tBzrHddJgpgbs"
+}

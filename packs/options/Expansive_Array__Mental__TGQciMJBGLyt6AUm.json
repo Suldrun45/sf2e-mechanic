@@ -1,0 +1,96 @@
+{
+  "name": "Expansive Array (Mental)",
+  "type": "action",
+  "effects": [],
+  "system": {
+    "_migration": {
+      "version": 0.959,
+      "previous": null
+    },
+    "description": {
+      "value": "",
+      "gm": ""
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "ORC",
+      "remaster": true
+    },
+    "rules": [
+      {
+        "key": "RollOption",
+        "label": "Array",
+        "toggleable": true,
+        "option": "arrays",
+        "alwaysActive": true,
+        "mergeable": true,
+        "suboptions": [
+          {
+            "label": "Mental",
+            "value": "mental"
+          }
+        ]
+      },
+      {
+        "key": "ActiveEffectLike",
+        "path": "flags.system.turret.array",
+        "mode": "override",
+        "value": {
+          "damageType": "mental",
+          "range": 60,
+          "trait": "tech",
+          "group": "mental"
+        },
+        "predicate": [
+          "arrays:mental"
+        ]
+      },
+      {
+        "key": "Note",
+        "selector": [
+          "turret-weapon-damage"
+        ],
+        "title": "Critical Specialization",
+        "outcome": [
+          "criticalSuccess"
+        ],
+        "text": "The target must succeed at a @Check[will|dc:resolve(@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level + 10)] or be @UUID[Compendium.sf2e.conditions.Item.e1XGnhKNSQIm5IXg]{Stupefied 1} until the start of your next turn",
+        "predicate": [
+          "arrays:mental"
+        ]
+      }
+    ],
+    "slug": "expansive-array-mental",
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "actionType": {
+      "value": "passive"
+    },
+    "actions": {
+      "value": null
+    },
+    "category": null,
+    "deathNote": false
+  },
+  "_id": "TGQciMJBGLyt6AUm",
+  "img": "systems/sf2e/icons/actions/Passive.webp",
+  "folder": "atwuMT2f8x1sKfAl",
+  "sort": 100000,
+  "ownership": {
+    "default": 0,
+    "AU1j8tJgRKJzaB89": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!TGQciMJBGLyt6AUm"
+}

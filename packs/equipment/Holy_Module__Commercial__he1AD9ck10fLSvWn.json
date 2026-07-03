@@ -1,0 +1,129 @@
+{
+  "_id": "he1AD9ck10fLSvWn",
+  "folder": null,
+  "img": "systems/sf2e/icons/abilities/yellow-energy-burst.webp",
+  "name": "Holy Module (Commercial)",
+  "system": {
+    "description": {
+      "gm": "",
+      "value": "<p>This upgrade is often adorned with a religious symbol and channels celestial power. It deals an additional 1d4 spirit damage, or 3d4 spirit against an unholy target. If you are unholy, you are @UUID[Compendium.sf2e.conditions.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} while carrying or wielding this weapon. On a critical hit, the target is also @UUID[Compendium.sf2e.conditions.Item.TkIyaNPgTZFBCCuh]{Dazzled} (or @UUID[Compendium.sf2e.conditions.Item.XgEqL1kFApUbl5Z2]{Blinded} if unholy) until the end of your next turn unless it succeeds at a @Check[fortitude|dc:28] save.</p>"
+    },
+    "rules": [
+      {
+        "damageType": "spirit",
+        "diceNumber": 1,
+        "dieSize": "d4",
+        "key": "DamageDice",
+        "selector": "turret-weapon-damage",
+        "slug": "holy-module"
+      },
+      {
+        "key": "DamageAlteration",
+        "mode": "upgrade",
+        "predicate": [
+          "target:trait:unholy"
+        ],
+        "property": "dice-number",
+        "selectors": [
+          "turret-weapon-damage"
+        ],
+        "slug": "holy-module",
+        "value": 3
+      },
+      {
+        "key": "Note",
+        "outcome": [
+          "criticalSuccess"
+        ],
+        "selector": "turret-weapon-damage",
+        "text": "SF2E.SpecificRule.Equipment.Upgrades.Weapon.HolyModule.CriticalNoteCommercial",
+        "title": "SF2E.SpecificRule.Equipment.Upgrades.Weapon.HolyModule.LabelCommercial"
+      }
+    ],
+    "slug": "holy-module-commercial",
+    "_migration": {
+      "version": 0.959,
+      "lastMigration": null,
+      "previous": null
+    },
+    "traits": {
+      "otherTags": [],
+      "value": [
+        "holy",
+        "magical",
+        "tech"
+      ],
+      "rarity": "common"
+    },
+    "publication": {
+      "title": "Starfinder Player Core",
+      "authors": "",
+      "license": "ORC",
+      "remaster": true
+    },
+    "level": {
+      "value": 11
+    },
+    "quantity": 1,
+    "baseItem": null,
+    "bulk": {
+      "value": 0
+    },
+    "hp": {
+      "value": 0,
+      "max": 0
+    },
+    "hardness": 0,
+    "price": {
+      "value": {
+        "cp": 0,
+        "gp": 0,
+        "pp": 0,
+        "sp": 14000
+      }
+    },
+    "equipped": {
+      "carryType": "worn",
+      "invested": null
+    },
+    "containerId": null,
+    "size": "med",
+    "material": {
+      "type": null,
+      "grade": null
+    },
+    "identification": {
+      "status": "identified",
+      "unidentified": {
+        "name": "Unusual Object",
+        "img": "systems/sf2e/icons/abilities/yellow-energy-burst.webp",
+        "data": {
+          "description": {
+            "value": ""
+          }
+        }
+      }
+    },
+    "usage": {
+      "value": "other"
+    },
+    "subitems": []
+  },
+  "type": "equipment",
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "exportSource": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "effects": [],
+  "ownership": {
+    "default": 0,
+    "AU1j8tJgRKJzaB89": 3
+  },
+  "flags": {},
+  "sort": 1300000,
+  "_key": "!items!he1AD9ck10fLSvWn"
+}

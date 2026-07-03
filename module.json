@@ -1,0 +1,99 @@
+{
+  "id": "sf2e-mechanic",
+  "title": "SF2 Mechanic",
+  "version": "#{VERSION}#",
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14"
+  },
+  "authors": [
+    {
+      "name": "Sasane",
+      "flags": {}
+    }
+  ],
+  "manifest": "#{MANIFEST}#",
+  "download": "#{DOWNLOAD}#",  
+  "url": "https://github.com/Suldrun45/sf2e-mechanic",
+  "readme": "https://github.com/Suldrun45/sf2e-mechanic/blob/master/README.md",
+  "bugs": "https://github.com/Suldrun45/sf2e-mechanic/issues",
+  "changelog": "https://github.com/Suldrun45/sf2e-mechanic/blob/master/CHANGELOG.md",
+  "flags": {
+    "canUpload": true
+  },
+  "packFolders": [
+    {
+      "name": "SF2E Mechanic",
+      "sorting": "a",
+      "color": "#6f1c17",
+      "packs": [
+        "actors",
+		"equipment", 
+		"mods", 
+		"options"
+      ]
+    }
+  ],
+  "packs": [
+    {
+      "name": "actors",
+      "label": "Actors",
+      "path": "packs/actors",
+      "type": "Actor",
+      "system": "sf2e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "equipment",
+      "label": "Equipment",
+      "path": "packs/equipment",
+      "type": "Item",
+      "system": "sf2e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "options",
+      "label": "Options",
+      "path": "packs/options",
+      "type": "Item",
+      "system": "sf2e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "mods",
+      "label": "Mods",
+      "path": "packs/mods",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "sf2e",
+      "flags": {}
+    }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "sf2e",
+        "type": "system",
+        "compatibility": {
+			"verified": "1.2.0"
+		}
+      }
+    ]
+  },
+  "description": "<p>Automation for the SF2e Playtest Mechanic</p>"
+}

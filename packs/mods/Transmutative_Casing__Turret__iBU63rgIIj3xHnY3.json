@@ -1,0 +1,117 @@
+{
+  "folder": "rWgyRIvrQlnciFhL",
+  "name": "Transmutative Casing (Turret)",
+  "type": "effect",
+  "effects": [],
+  "system": {
+    "description": {
+      "gm": "",
+      "value": "<p>Exocortex or weapon</p><hr><p>Damage dealt by the item is inflicted by one of the following special materials of your choice: cold iron or silver. At 16th level, add adamantine and aucturnite to the list of options.</p>"
+    },
+    "rules": [
+      {
+        "key": "ChoiceSet",
+        "flag": "transmutativeCasing",
+        "choices": [
+          {
+            "label": "Adamantine",
+            "value": "adamantine",
+            "predicate": [
+              {
+                "gte": [
+                  "self:level",
+                  16
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Aucturnite",
+            "value": "aucturnite",
+            "predicate": [
+              {
+                "gte": [
+                  "self:level",
+                  16
+                ]
+              }
+            ]
+          },
+          {
+            "label": "Cold iron",
+            "value": "cold-iron"
+          },
+          {
+            "label": "Silver",
+            "value": "silver"
+          }
+        ]
+      },
+      {
+        "key": "AdjustStrike",
+        "property": "materials",
+        "value": "{item|flags.sf2e.rulesSelections.transmutativeCasing}",
+        "definition": [
+          "item:slug:turret-weapon"
+        ],
+        "mode": "add"
+      }
+    ],
+    "slug": null,
+    "_migration": {
+      "version": 0.959,
+      "previous": {
+        "schema": 0.955,
+        "foundry": "14.361",
+        "system": "8.1.2"
+      }
+    },
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "level": {
+      "value": 8
+    },
+    "duration": {
+      "value": 1,
+      "unit": "rounds",
+      "expiry": "turn-start",
+      "sustained": false
+    },
+    "start": {
+      "value": 0,
+      "initiative": null
+    },
+    "tokenIcon": {
+      "show": true
+    },
+    "badge": null,
+    "context": null,
+    "unidentified": false,
+    "fromSpell": false
+  },
+  "_id": "iBU63rgIIj3xHnY3",
+  "img": "systems/pf2e/icons/default-icons/effect.svg",
+  "ownership": {
+    "default": 0,
+    "AU1j8tJgRKJzaB89": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "exportSource": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "sort": 850000,
+  "_key": "!items!iBU63rgIIj3xHnY3"
+}

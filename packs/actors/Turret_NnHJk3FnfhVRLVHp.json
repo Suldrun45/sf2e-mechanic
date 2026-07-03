@@ -1,0 +1,994 @@
+{
+  "prototypeToken": {
+    "displayName": 20,
+    "displayBars": 20,
+    "flags": {
+      "sf2e": {
+        "linkToActorSize": true,
+        "autoscale": true
+      },
+      "Rideable": {
+        "issetRideableFlag": true,
+        "MaxRiderFlag": null,
+        "CustomRidingheightFlag": null,
+        "UseRidingHeightFlag": true,
+        "RidersScaleFlag": 1,
+        "RiderPositioningFlag": "RowPlacement",
+        "RiderOffsetFlag": [
+          0,
+          0
+        ],
+        "TokenFormFlag": "TokenFormCircle",
+        "InsideMovementFlag": false,
+        "SpawnRidersFlag": "",
+        "CanbePilotedFlag": false,
+        "CheckPilotedCollisionFlag": false,
+        "PilotedbyDefaultFlag": false
+      }
+    },
+    "height": 1,
+    "width": 1,
+    "name": "Turret",
+    "actorLink": true,
+    "appendNumber": false,
+    "prependAdjective": false,
+    "texture": {
+      "src": "systems/sf2e/icons/default-icons/npc.svg",
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "fit": "contain",
+      "scaleX": 1,
+      "scaleY": 1,
+      "tint": "#ffffff",
+      "alphaThreshold": 0.75
+    },
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "disposition": -1,
+    "bar1": {
+      "attribute": "attributes.hp"
+    },
+    "bar2": {
+      "attribute": null
+    },
+    "light": {
+      "negative": false,
+      "priority": 0,
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "color": null,
+      "coloration": 1,
+      "dim": 0,
+      "attenuation": 0.5,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "type": null,
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      }
+    },
+    "sight": {
+      "enabled": false,
+      "range": 0,
+      "angle": 360,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "brightness": 0,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": {},
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 0,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "randomImg": false,
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null,
+    "depth": 1
+  },
+  "name": "Turret",
+  "type": "npc",
+  "effects": [],
+  "system": {
+    "attributes": {
+      "hp": {
+        "value": 8,
+        "temp": 0,
+        "max": 0,
+        "details": ""
+      },
+      "ac": {
+        "value": 10,
+        "details": ""
+      },
+      "allSaves": {
+        "value": ""
+      },
+      "speed": {
+        "value": 0,
+        "otherSpeeds": [],
+        "details": ""
+      },
+      "hardness": {
+        "value": 0
+      }
+    },
+    "initiative": {
+      "statistic": "perception"
+    },
+    "details": {
+      "languages": {
+        "value": [],
+        "details": ""
+      },
+      "level": {
+        "value": 1
+      },
+      "blurb": "",
+      "publicNotes": "",
+      "privateNotes": "",
+      "publication": {
+        "title": "",
+        "authors": "",
+        "license": "OGL",
+        "remaster": false
+      }
+    },
+    "resources": {},
+    "_migration": {
+      "version": 0.959,
+      "previous": {
+        "schema": 0.94,
+        "foundry": "14.364",
+        "system": "1.2.0"
+      }
+    },
+    "abilities": {
+      "str": {
+        "mod": 0
+      },
+      "dex": {
+        "mod": 0
+      },
+      "con": {
+        "mod": 0
+      },
+      "int": {
+        "mod": 0
+      },
+      "wis": {
+        "mod": 0
+      },
+      "cha": {
+        "mod": 0
+      }
+    },
+    "perception": {
+      "details": "",
+      "mod": 0,
+      "senses": [
+        {
+          "type": "darkvision"
+        }
+      ],
+      "vision": true
+    },
+    "saves": {
+      "fortitude": {
+        "value": 0,
+        "saveDetail": ""
+      },
+      "reflex": {
+        "value": 0,
+        "saveDetail": ""
+      },
+      "will": {
+        "value": 0,
+        "saveDetail": ""
+      }
+    },
+    "skills": {},
+    "traits": {
+      "value": [
+        "construct",
+        "mindless"
+      ],
+      "rarity": "common",
+      "size": {
+        "value": "med"
+      }
+    }
+  },
+  "img": "systems/sf2e/icons/default-icons/npc.svg",
+  "items": [
+    {
+      "type": "action",
+      "name": "Turret Defenses",
+      "system": {
+        "actionType": {
+          "value": "passive"
+        },
+        "description": {
+          "value": "<p><span style=\"font-family:Roboto, sans-serif\">Your turret's level is equal to your level, its AC is equal to your mechanic class DC, and it has Hardness equal to half your level (rounded up).</span></p><p><span style=\"font-family:Roboto, sans-serif\">It has trained proficiency in Reflex and Fortitude saves, using your Intelligence modifier to calculate these bonuses.</span></p><p><span style=\"font-family:Roboto, sans-serif\">It has 6 Hit Points, plus a number of Hit Points equal to 2 plus your Intelligence modifier for each level you have. Its Broken Threshold is equal to half its total Hit Points (rounded down).</span></p><p><span style=\"font-family:Roboto, sans-serif\">During your daily preparations, you automatically repair your turret, restoring it to maximum Hit Points. If your turret is destroyed, the next time you Deploy Turret, you deploy a repaired turret with maximum Hit Points.</span></p><p><span style=\"font-family:Roboto, sans-serif\">At 5th level, your turret's Hardness increases to 10. At 10th level, it increases to 15 and its proficiency rank in Reflex and Fortitude saves increases to expert. At 15th level, its Hardness increases to 20, and its proficiency rank in Reflex and Fortitude saves increases to master.</span></p>",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [
+          {
+            "key": "FlatModifier",
+            "selector": "hp",
+            "value": "(6 + @actor.abilities.int.mod + 2) * @actor.level",
+            "type": "proficiency",
+            "label": "Turret HP"
+          },
+          {
+            "key": "FlatModifier",
+            "selector": [
+              "ac"
+            ],
+            "value": "@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level",
+            "type": "proficiency",
+            "label": "Turret AC"
+          },
+          {
+            "key": "ActiveEffectLike",
+            "mode": "add",
+            "path": "system.attributes.hardness.value",
+            "phase": "afterDerived",
+            "value": "ternary(gte(@actor.level, 15), 20, ternary(gte(@actor.level, 10), 15, ternary(gte(@actor.level, 5), 10, ceil(@actor.level / 2))))"
+          },
+          {
+            "key": "FlatModifier",
+            "selector": [
+              "reflex",
+              "fortitude"
+            ],
+            "value": "@actor.abilities.int.mod + @actor.level",
+            "label": "Turret Saves"
+          },
+          {
+            "key": "FlatModifier",
+            "selector": [
+              "reflex",
+              "fortitude"
+            ],
+            "value": "ternary(gte(@actor.level, 15), 6, ternary(gte(@actor.level, 10), 4, 2))",
+            "label": "Turret Saves Proficiency",
+            "type": "proficiency"
+          }
+        ],
+        "slug": "turret-defenses",
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
+        "_migration": {
+          "version": 0.959,
+          "previous": {
+            "schema": 0.94,
+            "foundry": "14.364",
+            "system": "1.2.0"
+          }
+        },
+        "actions": {
+          "value": null
+        },
+        "category": "defensive",
+        "deathNote": false
+      },
+      "effects": [],
+      "_id": "pb95rhNpZKMLw6OY",
+      "img": "systems/sf2e/icons/default-icons/action.svg",
+      "folder": null,
+      "sort": 200000,
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "sf2e",
+        "systemVersion": "1.2.0",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "ownership": {
+        "default": 0
+      },
+      "_key": "!actors.items!NnHJk3FnfhVRLVHp.pb95rhNpZKMLw6OY"
+    },
+    {
+      "type": "melee",
+      "name": "Turret Weapon",
+      "effects": [],
+      "system": {
+        "_migration": {
+          "version": 0.959,
+          "previous": null
+        },
+        "description": {
+          "value": "",
+          "gm": ""
+        },
+        "publication": {
+          "title": "Starfinder Playtest Tech Class",
+          "authors": "",
+          "license": "ORC",
+          "remaster": true
+        },
+        "rules": [
+          {
+            "key": "RollOption",
+            "label": "Weapon Grade",
+            "option": "weapon-grade",
+            "toggleable": true,
+            "alwaysActive": true,
+            "suboptions": [
+              {
+                "label": "Commercial",
+                "value": "commercial"
+              },
+              {
+                "label": "Tactical",
+                "value": "tactical"
+              },
+              {
+                "label": "Advanced",
+                "value": "Advanced"
+              },
+              {
+                "label": "Superior",
+                "value": "superior"
+              },
+              {
+                "label": "Elite",
+                "value": "elite"
+              },
+              {
+                "label": "Ultimate",
+                "value": "ultimate"
+              },
+              {
+                "label": "Paragon",
+                "value": "paragon"
+              }
+            ],
+            "value": true,
+            "selection": "commercial"
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 1,
+              "strikeBonus": 0
+            },
+            "predicate": [
+              "weapon-grade:commercial"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 1,
+              "strikeBonus": 1
+            },
+            "predicate": [
+              "weapon-grade:tactical"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 2,
+              "strikeBonus": 1
+            },
+            "predicate": [
+              "weapon-grade:advanced"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 2,
+              "strikeBonus": 2
+            },
+            "predicate": [
+              "weapon-grade:superior"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 3,
+              "strikeBonus": 2
+            },
+            "predicate": [
+              "weapon-grade:elite"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 3,
+              "strikeBonus": 3
+            },
+            "predicate": [
+              "weapon-grade:ultimate"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 4,
+              "strikeBonus": 3
+            },
+            "predicate": [
+              "weapon-grade:paragon"
+            ]
+          },
+          {
+            "key": "FlatModifier",
+            "label": "Weapon Grade",
+            "value": "@actor.flags.system.turret.damage.strikeBonus",
+            "selector": [
+              "turret-weapon-attack-roll"
+            ],
+            "type": "item"
+          },
+          {
+            "key": "DamageAlteration",
+            "selectors": [
+              "turret-weapon-damage"
+            ],
+            "property": "dice-number",
+            "mode": "override",
+            "value": "@actor.flags.system.turret.damage.diceNumber",
+            "predicate": [
+              "dice:slug:base"
+            ]
+          }
+        ],
+        "slug": null,
+        "traits": {
+          "otherTags": [],
+          "value": [],
+          "config": {}
+        },
+        "action": "strike",
+        "area": null,
+        "damageRolls": {
+          "0Bkhxz4fHKCALHe7": {
+            "damage": "1d8",
+            "damageType": "piercing",
+            "category": null
+          }
+        },
+        "bonus": {
+          "value": 0
+        },
+        "attackEffects": {
+          "value": []
+        },
+        "range": {
+          "increment": 60,
+          "max": null
+        },
+        "subjectToMAP": true
+      },
+      "_id": "6B6kX8XbUb2wi0TE",
+      "img": "systems/sf2e/icons/default-icons/melee.svg",
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "AU1j8tJgRKJzaB89": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "sf2e",
+        "systemVersion": "1.2.0",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!NnHJk3FnfhVRLVHp.6B6kX8XbUb2wi0TE"
+    },
+    {
+      "type": "action",
+      "name": "Arrays",
+      "system": {
+        "actionType": {
+          "value": "passive"
+        },
+        "description": {
+          "value": "<p>Select one of the following arrays for your turret, which determines its  damage type and range increment. You can spend 10 minutes modifying your turret using your custom rig to change its selected array.</p><ul><li><p><strong>Chaingun:</strong> 1d8 piercing damage, range increment 90 feet, analog trait, projectile weapon group</p></li><li><p><strong>Disintegrator:</strong> 1d8 acid damage, range increment 60 feet, tech trait, corrosive weapon group</p></li><li><p><strong>Laser Beam:</strong> 1d8 fire damage, range increment 60 feet, tech trait, laser weapon group</p></li><li><p><strong>Thunderclap:</strong> 1d8 sonic damage, range increment 60 feet, tech trait, sonic weapon group</p></li><li><p><strong>Volt Thrower:</strong> 1d8 electricity damage, range increment 60 feet, tech trait, shock weapon group</p></li><li><p><strong>Zero Emitter:</strong> 1d8 cold damage, range increment 60 feet, tech trait, cryo weapon group</p></li></ul>",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [
+          {
+            "key": "RollOption",
+            "label": "Array",
+            "toggleable": true,
+            "option": "arrays",
+            "alwaysActive": true,
+            "mergeable": true,
+            "suboptions": [
+              {
+                "label": "Chaingun",
+                "value": "chaingun"
+              },
+              {
+                "label": "Disintegrator",
+                "value": "disintegrator"
+              },
+              {
+                "label": "Laser Beam",
+                "value": "laser-beam"
+              },
+              {
+                "label": "Thunderclap",
+                "value": "thunderclap"
+              },
+              {
+                "label": "Volt Thrower",
+                "value": "volt-thrower"
+              },
+              {
+                "label": "Zero Emitter",
+                "value": "zero-emitter"
+              }
+            ],
+            "value": true,
+            "selection": "chaingun"
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.array",
+            "mode": "override",
+            "value": {
+              "damageType": "piercing",
+              "range": 90,
+              "trait": "analog",
+              "group": "projectile"
+            },
+            "predicate": [
+              "arrays:chaingun"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.array",
+            "mode": "override",
+            "value": {
+              "damageType": "acid",
+              "range": 60,
+              "trait": "tech",
+              "group": "corrosive"
+            },
+            "predicate": [
+              "arrays:disintegrator"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.array",
+            "mode": "override",
+            "value": {
+              "damageType": "fire",
+              "range": 60,
+              "trait": "tech",
+              "group": "laser"
+            },
+            "predicate": [
+              "arrays:laser-beam"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.array",
+            "mode": "override",
+            "value": {
+              "damageType": "sonic",
+              "range": 60,
+              "trait": "tech",
+              "group": "sonic"
+            },
+            "predicate": [
+              "arrays:thunderclap"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.array",
+            "mode": "override",
+            "value": {
+              "damageType": "electricity",
+              "range": 60,
+              "trait": "tech",
+              "group": "shock"
+            },
+            "predicate": [
+              "arrays:volt-thrower"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.array",
+            "mode": "override",
+            "value": {
+              "damageType": "cold",
+              "range": 60,
+              "trait": "tech",
+              "group": "cryo"
+            },
+            "predicate": [
+              "arrays:zero-emitter"
+            ]
+          },
+          {
+            "key": "DamageAlteration",
+            "mode": "override",
+            "property": "damage-type",
+            "selectors": [
+              "turret-weapon-damage"
+            ],
+            "value": "{actor|flags.system.turret.array.damageType}",
+            "predicate": [
+              "dice:slug:base"
+            ]
+          },
+          {
+            "key": "AdjustStrike",
+            "mode": "add",
+            "property": "weapon-traits",
+            "value": "{actor|flags.system.turret.array.trait}"
+          },
+          {
+            "key": "AdjustStrike",
+            "mode": "upgrade",
+            "property": "range-increment",
+            "value": "{actor|flags.system.turret.array.range}"
+          },
+          {
+            "key": "AdjustStrike",
+            "mode": "upgrade",
+            "property": "weapon-group",
+            "value": "{actor|flags.system.turret.array.group}"
+          },
+          {
+            "key": "FlatModifier",
+            "value": "ternary(gte(@actor.level, 13), 6, ternary(gte(@actor.level, 5), 4, 2))+ @actor.level",
+            "selector": [
+              "turret-weapon-attack-roll"
+            ],
+            "label": "Proficiency",
+            "type": "proficiency"
+          },
+          {
+            "key": "FlatModifier",
+            "label": "Dexterity",
+            "value": "@actor.abilities.dex.mod",
+            "selector": [
+              "turret-weapon-attack-roll"
+            ],
+            "type": "ability",
+            "ability": "dex"
+          },
+          {
+            "key": "Note",
+            "selector": [
+              "turret-weapon-damage"
+            ],
+            "title": "Critical Specialization",
+            "outcome": [
+              "criticalSuccess"
+            ],
+            "text": "The target must succeed at a @Check[fortitude|dc:resolve(@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level + 10)] or be @UUID[Compendium.sf2e.conditions.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the start of your next turn",
+            "predicate": [
+              "arrays:chaingun"
+            ]
+          },
+          {
+            "key": "DamageDice",
+            "critical": true,
+            "selector": "turret-weapon-damage",
+            "diceNumber": 1,
+            "dieSize": "d6",
+            "damageType": "acid",
+            "category": "persistent",
+            "predicate": [
+              "arrays:disintegrator"
+            ],
+            "hideIfDisabled": true
+          },
+          {
+            "key": "FlatModifier",
+            "selector": [
+              "turret-weapon-damage"
+            ],
+            "value": "@actor.flags.system.turret.damage.diceNumber",
+            "damageCategory": "persistent",
+            "damageType": "acid",
+            "predicate": [
+              "arrays:disintegrator"
+            ],
+            "critical": true,
+            "hideIfDisabled": true
+          },
+          {
+            "key": "Note",
+            "selector": [
+              "turret-weapon-damage"
+            ],
+            "title": "Critical Specialization",
+            "outcome": [
+              "criticalSuccess"
+            ],
+            "text": "The target must succeed at a @Check[fortitude|dc:resolve(@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level + 10)] or be @UUID[Compendium.sf2e.conditions.Item.TkIyaNPgTZFBCCuh]{Dazzled} until the start of your next turn",
+            "predicate": [
+              "arrays:laser-beam"
+            ]
+          },
+          {
+            "key": "Note",
+            "selector": [
+              "turret-weapon-damage"
+            ],
+            "title": "Critical Specialization",
+            "outcome": [
+              "criticalSuccess"
+            ],
+            "text": "The target must succeed at a @Check[fortitude|dc:resolve(@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level + 10)] or be @UUID[Compendium.sf2e.conditions.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute",
+            "predicate": [
+              "arrays:thunderclap"
+            ]
+          },
+          {
+            "key": "Note",
+            "selector": [
+              "turret-weapon-damage"
+            ],
+            "title": "Critical Specialization",
+            "outcome": [
+              "criticalSuccess"
+            ],
+            "text": "The target must succeed at a @Check[fortitude|dc:resolve(@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level + 10)] or be @UUID[Compendium.sf2e.conditions.Item.dfCMdR4wnpbYNTix]{Stunned 1}",
+            "predicate": [
+              "arrays:volt-thrower"
+            ]
+          },
+          {
+            "key": "Note",
+            "selector": [
+              "turret-weapon-damage"
+            ],
+            "title": "Critical Specialization",
+            "outcome": [
+              "criticalSuccess"
+            ],
+            "text": "This weapon freezes part of the target, making it hard for them to move their body. The target is @UUID[Compendium.sf2e.conditions.Item.i3OJZU2nk64Df3xm]{Clumsy 1} until the start of your next turn.",
+            "predicate": [
+              "arrays:zero-emitter"
+            ]
+          }
+        ],
+        "slug": "arrays",
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
+        "_migration": {
+          "version": 0.959,
+          "previous": {
+            "schema": null,
+            "foundry": "14.364",
+            "system": "1.2.0"
+          }
+        },
+        "actions": {
+          "value": null
+        },
+        "category": null,
+        "deathNote": false
+      },
+      "effects": [],
+      "_id": "aQjDCjRVPBQ4PKOq",
+      "img": "systems/sf2e/icons/default-icons/action.svg",
+      "folder": null,
+      "sort": 100000,
+      "ownership": {
+        "default": 0,
+        "AU1j8tJgRKJzaB89": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "sf2e",
+        "systemVersion": "1.2.0",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!NnHJk3FnfhVRLVHp.aQjDCjRVPBQ4PKOq"
+    },
+    {
+      "type": "action",
+      "name": "Reposition Exocortex",
+      "system": {
+        "actionType": {
+          "value": "passive"
+        },
+        "description": {
+          "value": "",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [
+          {
+            "key": "BaseSpeed",
+            "selector": "land",
+            "value": 25,
+            "predicate": [
+              {
+                "gte": [
+                  "self:level",
+                  3
+                ]
+              }
+            ]
+          },
+          {
+            "key": "BaseSpeed",
+            "selector": "land",
+            "value": 30,
+            "predicate": [
+              {
+                "gte": [
+                  "self:level",
+                  8
+                ]
+              }
+            ]
+          },
+          {
+            "key": "BaseSpeed",
+            "selector": "land",
+            "value": 35,
+            "predicate": [
+              {
+                "gte": [
+                  "self:level",
+                  13
+                ]
+              }
+            ]
+          },
+          {
+            "key": "BaseSpeed",
+            "selector": "land",
+            "value": 40,
+            "predicate": [
+              {
+                "gte": [
+                  "self:level",
+                  18
+                ]
+              }
+            ]
+          }
+        ],
+        "slug": null,
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
+        "_migration": {
+          "version": 0.959,
+          "previous": {
+            "schema": null,
+            "foundry": "14.364",
+            "system": "1.2.0"
+          }
+        },
+        "actions": {
+          "value": null
+        },
+        "category": null,
+        "deathNote": false
+      },
+      "effects": [],
+      "_id": "PPdHoqYb1Vw6O3sI",
+      "img": "systems/sf2e/icons/default-icons/action.svg",
+      "folder": null,
+      "sort": 300000,
+      "ownership": {
+        "default": 0,
+        "AU1j8tJgRKJzaB89": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "sf2e",
+        "systemVersion": "1.2.0",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!NnHJk3FnfhVRLVHp.PPdHoqYb1Vw6O3sI"
+    }
+  ],
+  "folder": null,
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "ownership": {
+    "default": 0,
+    "AU1j8tJgRKJzaB89": 3
+  },
+  "_id": "NnHJk3FnfhVRLVHp",
+  "sort": 0,
+  "_key": "!actors!NnHJk3FnfhVRLVHp"
+}

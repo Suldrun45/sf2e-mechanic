@@ -1,0 +1,133 @@
+{
+  "name": "Multidisciplinary Mechanic",
+  "type": "action",
+  "effects": [],
+  "system": {
+    "_migration": {
+      "version": 0.959,
+      "previous": null
+    },
+    "description": {
+      "value": "<p>If you have the @UUID[Compendium.starfinder-field-test-for-pf2e.sf2e-feats.Item.zsXV8mcHVZqx6FVj]{Critical Explosion} feat and plant a mine, you can choose to deal a different type of damage depending on your choice of discipline.</p><p>If you have the @UUID[Compendium.starfinder-field-test-for-pf2e.sf2e-feats.Item.JoA3Q3W5a70g3aZV]{Explosive Shot} feat, when you Modify a weapon with Explosive Shot, you can choose the splash damage dealt to be a different type of damage depending on your choice of discipline.</p><p>Biotech deals acid damage, magitech deals force damage, and necrotech deals void damage.</p>",
+      "gm": ""
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "rules": [
+      {
+        "key": "ChoiceSet",
+        "flag": "multidisciplinaryMechanic",
+        "rollOption": "multidisciplinary-mechanic-type",
+        "choices": [
+          {
+            "label": "Biotech",
+            "value": "acid"
+          },
+          {
+            "label": "Magitech",
+            "value": "force"
+          },
+          {
+            "label": "Necrotech",
+            "value": "void"
+          }
+        ]
+      },
+      {
+        "key": "RollOption",
+        "option": "multidisciplinary-mechanic",
+        "toggleable": true
+      },
+      {
+        "key": "DamageAlteration",
+        "selectors": [
+          "turret-weapon-damage",
+          "weapon-damage"
+        ],
+        "predicate": [
+          "multidisciplinary-mechanic"
+        ],
+        "property": "damage-type",
+        "slug": "explosive-shot-splash",
+        "value": "{item|flags.system.rulesSelections.multidisciplinaryMechanic}",
+        "mode": "override"
+      },
+      {
+        "key": "ItemAlteration",
+        "mode": "add",
+        "property": "description",
+        "predicate": [
+          "critical-explosion",
+          "multidisciplinary-mechanic",
+          "item:slug:detonate-mine"
+        ],
+        "label": "Mutlidisciplinary Mechanic",
+        "itemType": "action",
+        "value": [
+          {
+            "text": "The Critical Explosion persistent damage becomes @Damage[(@actor.system.abilities.int.mod)[persistent, {item|flags.system.rulesSelections.multidisciplinaryMechanic}]|options:critical-explosion-persistent-damage]"
+          }
+        ]
+      },
+      {
+        "key": "AdjustModifier",
+        "selector": "detonate-mine-inline-damage",
+        "predicate": [
+          "modifier:slug:critical-explosion",
+          "multidisciplinary-mechanic",
+          "critical-explosion"
+        ],
+        "suppress": true
+      },
+      {
+        "key": "FlatModifier",
+        "selector": [
+          "detonate-mine-inline-damage"
+        ],
+        "value": "@actor.system.abilities.int.mod",
+        "label": "Critical Explosion",
+        "slug": "critical-explosion-multidisciplinary-mechanic",
+        "predicate": [
+          "critical-explosion",
+          "multidisciplinary-mechanic"
+        ],
+        "damageType": "{item|flags.system.rulesSelections.multidisciplinaryMechanic}"
+      }
+    ],
+    "slug": null,
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "actionType": {
+      "value": "passive"
+    },
+    "actions": {
+      "value": null
+    },
+    "category": null,
+    "deathNote": false
+  },
+  "_id": "894xo66p6om8suvT",
+  "img": "systems/sf2e/icons/actions/Passive.webp",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "AU1j8tJgRKJzaB89": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!894xo66p6om8suvT"
+}

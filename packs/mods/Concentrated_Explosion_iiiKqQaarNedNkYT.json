@@ -1,0 +1,84 @@
+{
+  "folder": "XyeYAmLx25jK8lqq",
+  "name": "Concentrated Explosion",
+  "type": "effect",
+  "effects": [],
+  "system": {
+    "_migration": {
+      "version": 0.959,
+      "previous": null
+    },
+    "description": {
+      "value": "<p>grenade</p><hr><p>You pack extra explosives into the grenade’s casing. The item’s area is halved (rounded down; a 5-foot burst is reduced to one 5-foot square) but it deals one additional die of damage.</p>",
+      "gm": ""
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "rules": [
+      {
+        "key": "ChoiceSet",
+        "choices": {
+          "ownedItems": true,
+          "types": [
+            "weapon"
+          ],
+          "predicate": [
+            "item:base:grenade"
+          ]
+        },
+        "flag": "weapon"
+      },
+      {
+        "key": "DamageDice",
+        "selector": "{item|flags.system.rulesSelections.weapon}-damage",
+        "diceNumber": 1
+      }
+    ],
+    "slug": null,
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "level": {
+      "value": 4
+    },
+    "duration": {
+      "value": 1,
+      "unit": "rounds",
+      "expiry": "turn-start",
+      "sustained": false
+    },
+    "tokenIcon": {
+      "show": true
+    },
+    "unidentified": false,
+    "start": {
+      "value": 0,
+      "initiative": null
+    },
+    "badge": null,
+    "fromSpell": false,
+    "context": null
+  },
+  "_id": "iiiKqQaarNedNkYT",
+  "img": "systems/sf2e/icons/default-icons/effect.svg",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "AU1j8tJgRKJzaB89": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!iiiKqQaarNedNkYT"
+}

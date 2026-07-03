@@ -1,0 +1,103 @@
+{
+  "folder": "zBMJghDwgChKxdNm",
+  "name": "Big Boom (Mine)",
+  "type": "effect",
+  "effects": [],
+  "system": {
+    "description": {
+      "gm": "",
+      "value": "<p>Grenade or Area Weapon</p><hr><p>You know how to cram a lot of explosives and accelerant into a small package. Increase the item’s radius by 5 feet (if it’s a burst), its area by 5 feet (if it’s a cone), or its area by 10 feet (if it’s a line).</p>"
+    },
+    "rules": [
+      {
+        "key": "RollOption",
+        "option": "big-boom",
+        "label": "Big Boom"
+      },
+      {
+        "key": "ItemAlteration",
+        "itemType": "action",
+        "mode": "override",
+        "property": "description",
+        "predicate": [
+          "item:slug:detonate-mine"
+        ],
+        "value": [
+          {
+            "text": "**Requirements** A mine you deployed is within 100 feet. With a moment's thought, you trigger the detonation of a mine you deployed within 100 feet, causing it to explode in a @Template[type:burst|distance:15]. This mine deals @Damage[(1+ceil(@actor.level/2))d6[fire]] damage, based on the damage type you selected when that mine was deployed. Creatures in the area can attempt a @Check[reflex|dc:resolve(@actor.system.resources.dc.value)|basic] save against your class DC."
+          },
+          {
+            "text": "You can Detonate Mine as a reaction, with the following trigger."
+          },
+          {
+            "text": "**Trigger** A creature enters or leaves a square within the burst area of a mine you have deployed.</p><hr><p>At 3rd level and every 2 levels thereafter, the damage increases by [[/r 1d6]]."
+          }
+        ]
+      },
+      {
+        "key": "Note",
+        "text": "You know how to cram a lot of explosives and accelerant into a small package. Increase the item’s radius by 5 feet (if it’s a burst), its area by 5 feet (if it’s a cone), or its area by 10 feet (if it’s a line).",
+        "selector": [
+          "detonate-mine-inline-damage"
+        ],
+        "title": "Big Boom"
+      }
+    ],
+    "slug": null,
+    "_migration": {
+      "version": 0.959,
+      "previous": {
+        "schema": 0.955,
+        "foundry": "14.361",
+        "system": "8.1.2"
+      }
+    },
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "level": {
+      "value": 1
+    },
+    "duration": {
+      "value": 1,
+      "unit": "rounds",
+      "expiry": "turn-start",
+      "sustained": false
+    },
+    "start": {
+      "value": 0,
+      "initiative": null
+    },
+    "tokenIcon": {
+      "show": true
+    },
+    "badge": null,
+    "context": null,
+    "unidentified": false,
+    "fromSpell": false
+  },
+  "img": "systems/pf2e/icons/default-icons/effect.svg",
+  "ownership": {
+    "default": 0,
+    "AU1j8tJgRKJzaB89": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "exportSource": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "_id": "PaijXkxqa8vodJ8h",
+  "sort": 100000,
+  "_key": "!items!PaijXkxqa8vodJ8h"
+}

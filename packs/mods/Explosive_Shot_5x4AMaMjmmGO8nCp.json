@@ -1,0 +1,90 @@
+{
+  "folder": "XyeYAmLx25jK8lqq",
+  "name": "Explosive Shot",
+  "type": "effect",
+  "effects": [],
+  "system": {
+    "_migration": {
+      "version": 0.959,
+      "previous": null
+    },
+    "description": {
+      "value": "<p>Non-area weapon</p><hr><p>The modded item deals 1 splash damage per weapon damage dice. This splash damage is the same damage type the modded item deals.</p>",
+      "gm": ""
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "rules": [
+      {
+        "key": "ChoiceSet",
+        "choices": {
+          "ownedItems": true,
+          "types": [
+            "weapon"
+          ],
+          "predicate": [
+            {
+              "not": "item:base:grenade"
+            }
+          ]
+        },
+        "flag": "weapon"
+      },
+      {
+        "key": "FlatModifier",
+        "value": 1,
+        "selector": [
+          "{item|flags.sf2e.rulesSelections.weapon}-damage"
+        ],
+        "damageCategory": "splash",
+        "slug": "explosive-shot-splash"
+      }
+    ],
+    "slug": null,
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "level": {
+      "value": 1
+    },
+    "duration": {
+      "value": -1,
+      "unit": "unlimited",
+      "expiry": null,
+      "sustained": false
+    },
+    "tokenIcon": {
+      "show": true
+    },
+    "unidentified": false,
+    "start": {
+      "value": 0,
+      "initiative": null
+    },
+    "badge": null,
+    "fromSpell": false,
+    "context": null
+  },
+  "img": "systems/sf2e/icons/default-icons/effect.svg",
+  "ownership": {
+    "default": 0,
+    "AU1j8tJgRKJzaB89": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "exportSource": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "_id": "5x4AMaMjmmGO8nCp",
+  "sort": 400000,
+  "_key": "!items!5x4AMaMjmmGO8nCp"
+}

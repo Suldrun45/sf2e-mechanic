@@ -1,0 +1,74 @@
+{
+  "folder": "rWgyRIvrQlnciFhL",
+  "name": "Glitch Pulse (Turret)",
+  "type": "effect",
+  "effects": [],
+  "system": {
+    "_migration": {
+      "version": 0.959,
+      "previous": null
+    },
+    "description": {
+      "value": "<p>exocortex or weapon</p><hr><p>Strikes from the modded exocortex or weapon disrupt technology. On a hit, Strikes cause a random tech item held by the target to gain the glitching 3 condition for 1 round. If the creature has the tech trait, the creature must attempt a @Check[fortitude|dc:resolve(@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level + 10)] save against your class DC.</p><p><strong>Critical Success</strong> The creature is immune to your glitch pulse for 24 hours.</p><p><strong>Success</strong> No effect.</p><p><strong>Failure</strong> The creature is glitching 3 for 1 round.</p><p><strong>Critical Failure</strong> The creature is glitching 3 for 1 minute.</p>",
+      "gm": ""
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "rules": [
+      {
+        "key": "Note",
+        "selector": [
+          "turret-weapon-damage"
+        ],
+        "title": "Glitch Pulse",
+        "text": "{item|description}"
+      }
+    ],
+    "slug": "glitch-pulse-turret",
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "level": {
+      "value": 12
+    },
+    "duration": {
+      "value": 1,
+      "unit": "rounds",
+      "expiry": "turn-start",
+      "sustained": false
+    },
+    "tokenIcon": {
+      "show": true
+    },
+    "unidentified": false,
+    "start": {
+      "value": 0,
+      "initiative": null
+    },
+    "badge": null,
+    "fromSpell": false,
+    "context": null
+  },
+  "_id": "9fFQV094Qem9JYvV",
+  "img": "systems/sf2e/icons/default-icons/effect.svg",
+  "sort": 800000,
+  "ownership": {
+    "default": 0,
+    "AU1j8tJgRKJzaB89": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!9fFQV094Qem9JYvV"
+}

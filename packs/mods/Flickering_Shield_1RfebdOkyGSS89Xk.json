@@ -1,0 +1,65 @@
+{
+  "folder": "8aO3Yfn75r2z9wKC",
+  "name": "Flickering Shield",
+  "type": "effect",
+  "effects": [],
+  "system": {
+    "_migration": {
+      "version": 0.959,
+      "previous": null
+    },
+    "description": {
+      "value": "<p>armor</p><hr><p>The item produces a temporary shield that protects its wearer from harm. The creature wearing the modded armor gains temporary Hit Points equal to 5 + your Intelligence modifier and regains Hit Points equal to your Intelligence modifier for every round the shield is active. The flickering shield lasts for 1 minute or until dismissed. The modded item or exocortex then becomes temporarily immune to your flickering shield mod for 10 minutes.</p><p>(no automation)</p>",
+      "gm": ""
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "rules": [],
+    "slug": null,
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "level": {
+      "value": 10
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "expiry": "turn-start",
+      "sustained": false
+    },
+    "tokenIcon": {
+      "show": true
+    },
+    "unidentified": false,
+    "start": {
+      "value": 0,
+      "initiative": null
+    },
+    "badge": null,
+    "fromSpell": false,
+    "context": null
+  },
+  "_id": "1RfebdOkyGSS89Xk",
+  "img": "systems/sf2e/icons/default-icons/effect.svg",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "AU1j8tJgRKJzaB89": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!1RfebdOkyGSS89Xk"
+}

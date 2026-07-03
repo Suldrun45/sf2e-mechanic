@@ -1,0 +1,84 @@
+{
+  "folder": "XyeYAmLx25jK8lqq",
+  "name": "Glitch Pulse",
+  "type": "effect",
+  "effects": [],
+  "system": {
+    "_migration": {
+      "version": 0.959,
+      "previous": null
+    },
+    "description": {
+      "value": "<p>exocortex or weapon</p><hr><p>Strikes from the modded exocortex or weapon disrupt technology. On a hit, Strikes cause a random tech item held by the target to gain the Glitching 3 condition for 1 round. If the creature has the tech trait, the creature must attempt a Fortitude save against your class DC.</p>",
+      "gm": ""
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "rules": [
+      {
+        "key": "ChoiceSet",
+        "choices": {
+          "ownedItems": true,
+          "types": [
+            "weapon"
+          ]
+        },
+        "flag": "weapon"
+      },
+      {
+        "key": "Note",
+        "selector": [
+          "{item|flags.system.rulesSelections.weapon}-damage"
+        ],
+        "title": "Glitch Pulse",
+        "text": "{item|description}"
+      }
+    ],
+    "slug": null,
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "level": {
+      "value": 12
+    },
+    "duration": {
+      "value": 1,
+      "unit": "rounds",
+      "expiry": "turn-start",
+      "sustained": false
+    },
+    "tokenIcon": {
+      "show": true
+    },
+    "unidentified": false,
+    "start": {
+      "value": 0,
+      "initiative": null
+    },
+    "badge": null,
+    "fromSpell": false,
+    "context": null
+  },
+  "_id": "hcpQfbtTEtvj3nWU",
+  "img": "systems/sf2e/icons/default-icons/effect.svg",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "AU1j8tJgRKJzaB89": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!hcpQfbtTEtvj3nWU"
+}
