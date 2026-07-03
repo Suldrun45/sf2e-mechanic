@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.0.4
+Add Physical Versatility for Turrets
+
 ## Version 0.0.2
 Add Concentrated Dosage and Healbot
 

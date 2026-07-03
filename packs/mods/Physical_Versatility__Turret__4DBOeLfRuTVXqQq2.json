@@ -1,0 +1,96 @@
+{
+  "folder": "rWgyRIvrQlnciFhL",
+  "name": "Physical Versatility (Turret)",
+  "type": "effect",
+  "effects": [],
+  "system": {
+    "_migration": {
+      "version": 0.959,
+      "previous": null
+    },
+    "description": {
+      "value": "<p>Grenade or Weapon that deals physical damage</p><hr><p>You modify the item’s structure, changing its destructive potential. The item deals one of the following damage types, rather than its typical damage type: bludgeoning, piercing, slashing.</p>",
+      "gm": ""
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "rules": [
+      {
+        "key": "ChoiceSet",
+        "flag": "damageType",
+        "choices": [
+          {
+            "label": "Bludgeoning",
+            "value": "bludgeoning"
+          },
+          {
+            "label": "Piercing",
+            "value": "piercing"
+          },
+          {
+            "label": "Slashing",
+            "value": "slashing"
+          }
+        ]
+      },
+      {
+        "key": "DamageAlteration",
+        "selectors": [
+          "turret-weapon-damage"
+        ],
+        "property": "damage-type",
+        "mode": "override",
+        "value": "{item|flags.sf2e.rulesSelections.damageType}",
+        "predicate": [
+          "dice:slug:base"
+        ]
+      }
+    ],
+    "slug": null,
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "level": {
+      "value": 5
+    },
+    "duration": {
+      "value": -1,
+      "unit": "unlimited",
+      "expiry": null,
+      "sustained": false
+    },
+    "tokenIcon": {
+      "show": true
+    },
+    "unidentified": false,
+    "start": {
+      "value": 0,
+      "initiative": null
+    },
+    "badge": null,
+    "fromSpell": false,
+    "context": null
+  },
+  "_id": "4DBOeLfRuTVXqQq2",
+  "img": "systems/sf2e/icons/default-icons/effect.svg",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "KQrTwr8CCXT32xPE": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!4DBOeLfRuTVXqQq2"
+}
