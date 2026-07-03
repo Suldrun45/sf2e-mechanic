@@ -697,15 +697,9 @@
           },
           {
             "key": "AdjustStrike",
-            "mode": "upgrade",
+            "mode": "override",
             "property": "range-increment",
             "value": "{actor|flags.system.turret.array.range}"
-          },
-          {
-            "key": "AdjustStrike",
-            "mode": "upgrade",
-            "property": "weapon-group",
-            "value": "{actor|flags.system.turret.array.group}"
           },
           {
             "key": "FlatModifier",
