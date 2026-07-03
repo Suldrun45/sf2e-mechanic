@@ -1,0 +1,65 @@
+{
+  "name": "Concentrated Dosage",
+  "type": "effect",
+  "effects": [],
+  "system": {
+    "_migration": {
+      "version": 0.959,
+      "previous": null
+    },
+    "description": {
+      "value": "<p>You disassemble the item to deliver a powerful dose of analgesics. If a targeted creature has the clumsy or sickened condition, the item decreases the value of that condition by 1. At 6th level, you can choose to suppress persistent damage afflicting the target until the beginning of your next turn. At 12th level, you can choose to grant the target fast healing equal to your Intelligence modifier or the item’s level (whichever is higher) until the beginning of your next turn.</p>",
+      "gm": ""
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "rules": [],
+    "slug": null,
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "level": {
+      "value": 1
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "expiry": "turn-start",
+      "sustained": false
+    },
+    "tokenIcon": {
+      "show": true
+    },
+    "unidentified": false,
+    "start": {
+      "value": 0,
+      "initiative": null
+    },
+    "badge": null,
+    "fromSpell": false,
+    "context": null
+  },
+  "_id": "eLKyeD2SsrZ9RFmN",
+  "img": "systems/sf2e/icons/default-icons/effect.svg",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "KQrTwr8CCXT32xPE": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!eLKyeD2SsrZ9RFmN"
+}

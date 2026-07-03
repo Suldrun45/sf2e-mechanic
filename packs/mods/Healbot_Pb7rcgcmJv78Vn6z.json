@@ -1,0 +1,65 @@
+{
+  "folder": "ODQPjgIGakuhsQTJ",
+  "name": "Healbot",
+  "type": "effect",
+  "effects": [],
+  "system": {
+    "_migration": {
+      "version": 0.959,
+      "previous": null
+    },
+    "description": {
+      "value": "<p>You command your exocortex to deliver stored medication to a nearby ally. Your drone administers the item as an action with the manipulate trait. Healing items administered in this way heal an additional amount of Hit Points equal to your Intelligence modifier or half the item’s level, whichever is higher.</p>",
+      "gm": ""
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "rules": [],
+    "slug": null,
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "level": {
+      "value": 1
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "expiry": "turn-start",
+      "sustained": false
+    },
+    "tokenIcon": {
+      "show": true
+    },
+    "unidentified": false,
+    "start": {
+      "value": 0,
+      "initiative": null
+    },
+    "badge": null,
+    "fromSpell": false,
+    "context": null
+  },
+  "_id": "Pb7rcgcmJv78Vn6z",
+  "img": "systems/sf2e/icons/default-icons/effect.svg",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "KQrTwr8CCXT32xPE": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!Pb7rcgcmJv78Vn6z"
+}
