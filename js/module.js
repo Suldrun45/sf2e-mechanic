@@ -2,9 +2,10 @@ const SOURCES = {
     MECHANIC:{
         DEPLOY_TURRET: "Compendium.starfinder-field-test-for-pf2e.sf2e-actions.Item.1vWiNk1jbqCq4O16"     
     }
-}
-
-const TURRET_ACTOR_UUID = "Compendium.sf2e-mechanic.actors.Actor.NnHJk3FnfhVRLVHp"
+};
+const TURRET_ACTOR_UUID = "Compendium.sf2e-mechanic.actors.Actor.NnHJk3FnfhVRLVHp";
+const MINE_ACTOR_UUID = "Compendium.pf2e-summons-assistant.sf2e-summons-assistant-actors.Actor.sAVuxP25VE126TdZ";
+const MULTIDISCIPLINARY_MECHANIC_ACTION_UUID = "Compendium.sf2e-mechanic.options.Item.894xo66p6om8suvT";
 
 const SOURCE_UUIDS = getAllSourceUUIDs();
 
@@ -81,6 +82,26 @@ Hooks.once("ready", async function () {
             summonDetailsGroup,
             config,
           );
+    });
+
+    //Hooks.on("preCreateToken", async (tokenDocument, token, _info, userID) => {});
+    
+    Hooks.on("updateActor", async (actor, data, _info, userID) => {     
+      if (actor.sourceId == MINE_ACTOR_UUID && data?.flags?.["pf2e-summons-assistant"]?.summoner){                
+        const summoner = game.actors.get(data?.flags?.["pf2e-summons-assistant"]?.summoner?.id);
+        const summonerMD = summoner.itemTypes.action.find(p => p.sourceId == MULTIDISCIPLINARY_MECHANIC_ACTION_UUID);
+        if (summonerMD){
+          const summonerRules= summonerMD.rules;
+          const summonerRuleType = summonerRules.find(p=>p.key=="ChoiceSet" && p.flag=="multidisciplinaryMechanic")?.selection;
+          if (summonerRuleType){
+            const newMD = (await foundry.utils.fromUuid("Compendium.sf2e-mechanic.options.Item.894xo66p6om8suvT")).toObject();
+            newMD.system.rules.find(p=>p.key=="ChoiceSet" && p.flag=="multidisciplinaryMechanic").selection = summonerRuleType;
+            newMD.system.rules.find(p=>p.key=="RollOption" && p.option=="multidisciplinary-mechanic").value=true;
+            await actor.createEmbeddedDocuments("Item", [newMD]);
+          }
+        }
+      }
+
     });
 });
 
@@ -193,7 +214,7 @@ async function summon(
     // No Summon Spell Found
     if (summonDetailsGroup === null) return;
   
-    const summonerItem = config?.item ?? (await fromUuid(itemUuid));
+    const summonerItem = config?.item ?? (await foundry.utils.fromUuid(itemUuid));
   
     const summonActorUUIDList = [];
   

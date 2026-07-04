@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.1.2
+Add automation to apply automatically Multidisciplinary Mechanic to Mines
+
 ## Version 0.1.1
 Use PF2e Toolbelt's Share Data feature to identify the link between a Mechanic and their Turret for Deploy Turret automation
 
