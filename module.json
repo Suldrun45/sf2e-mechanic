@@ -13,7 +13,7 @@
     }
   ],
   "manifest": "#{MANIFEST}#",
-  "download": "#{DOWNLOAD}#",  
+  "download": "#{DOWNLOAD}#",
   "url": "https://github.com/Suldrun45/sf2e-mechanic",
   "readme": "https://github.com/Suldrun45/sf2e-mechanic/blob/master/README.md",
   "bugs": "https://github.com/Suldrun45/sf2e-mechanic/issues",
@@ -28,10 +28,11 @@
       "color": "#6f1c17",
       "packs": [
         "actors",
-		"equipment", 
-		"mods", 
-		"options"
-      ]
+        "equipment",
+        "mods",
+        "options"
+      ],
+      "folders": []
     }
   ],
   "packs": [
@@ -89,11 +90,26 @@
       {
         "id": "sf2e",
         "type": "system",
+        "manifest": "https://github.com/foundryvtt/pf2e/releases/download/latest/system.json",
         "compatibility": {
-			"verified": "1.2.0"
+          "verified": "1.2.0"
+        }
+      }
+    ],
+    "recommends": [
+      {
+        "id": "foundry-summons",
+        "type": "module",
+        "manifest": "https://github.com/MrVauxs/foundry-summons-2/releases/latest/download/module.json",
+        "compatibility": {
+          "minimum": "2.5.0",
+          "verified": "2.5.0"
 		}
       }
     ]
   },
+  "esmodules": [
+    "js/module.js"
+  ],
   "description": "<p>Automation for the SF2e Playtest Mechanic</p>"
 }

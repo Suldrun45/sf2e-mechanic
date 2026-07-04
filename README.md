@@ -11,6 +11,8 @@
 
 On Turrets, some options can't be automated, such as the changes in range increment of the weapon due to modifying the Weapon Array or to Moding, or the Save DC for the "Area Denial Turret" Area Effects. They must be modified manually directly on the Attack.
 
+Automation for Deploy Turret inspired from ChasarooniZ's PF2e Summons Assistant module https://github.com/ChasarooniZ/pf2e-summons-assistant
+
 Install it with the manifest URL: 
 
 https://github.com/Suldrun45/sf2e-mechanic/releases/latest/download/module.json

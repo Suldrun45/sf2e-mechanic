@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.0.8
+Add automation for Deploying the Turret (shamelessly inspired from ChasarooniZ's PF2e Summons Assistant module https://github.com/ChasarooniZ/pf2e-summons-assistant)
+
 ## Version 0.0.7
 Add options of Area Denial Turret
 
