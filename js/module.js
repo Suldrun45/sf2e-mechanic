@@ -138,9 +138,19 @@ async function getSpecificSummonDetails(
 
 async function getTurret(summonerActorId) {
     const summonerActor = game.actors.get(summonerActorId);
-    const defaultTurretUUID = summonerActor.getFlag("sf2e-mechanic", 'turretUUID');
 
-    const turrets = game.actors
+    const defaultTurretUUID = summonerActor.getFlag("sf2e-mechanic", 'turretUUID');
+      
+    let turrets = game.toolbelt?.api.shareData.getSlavesInMemory(summonerActor, false).filter(act => (act?._stats?.compendiumSource === TURRET_ACTOR_UUID)).map(act => ({ name: act.name, uuid: act.uuid, selected: defaultTurretUUID && act.uuid === defaultTurretUUID }));
+
+    if (turrets.length > 0){
+      const turretUUID = turrets[0].uuid;
+      await summonerActor.setFlag("sf2e-mechanic", 'turretUUID', turretUUID);
+      return turretUUID;
+    }
+    else
+    {
+      turrets = game.actors
         .filter(act =>
             act.type === 'npc' &&
             (act?._stats?.compendiumSource === TURRET_ACTOR_UUID) &&
@@ -148,12 +158,13 @@ async function getTurret(summonerActorId) {
         )
         .map(act => ({ name: act.name, uuid: act.uuid, selected: defaultTurretUUID && act.uuid === defaultTurretUUID }));
 
-    if (turrets.length === 1) {
-        const turretUUID = turrets[0].uuid;
-        await summonerActor.setFlag("sf2e-mechanic", 'turretUUID', turretUUID);
-        return turretUUID;
-    } else if (turrets.length > 1) {
-        warnNotification("Too many turrets found.");
+      if (turrets.length === 1) {
+          const turretUUID = turrets[0].uuid;
+          await summonerActor.setFlag("sf2e-mechanic", 'turretUUID', turretUUID);
+          return turretUUID;
+      } else if (turrets.length > 1) {
+          warnNotification("Too many turrets found.");
+      }
     }
     return null;
 }
@@ -194,7 +205,7 @@ async function summon(
       const isCharacter = summonDetails?.isCharacter;
       const crosshairParameters = summonDetails?.crosshairParameters || {};
       const amount = summonDetails?.amount || 1;
-  
+
       let selectedActorUuid;
       if (allowedSpecificUuids.length === 1) {
         selectedActorUuid = allowedSpecificUuids[0];
