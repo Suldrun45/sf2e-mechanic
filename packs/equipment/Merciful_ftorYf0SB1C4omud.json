@@ -10,18 +10,12 @@
     },
     "rules": [
       {
-        "definition": [
-          "item:slug:turret-weapon"
-        ],
         "key": "AdjustStrike",
         "mode": "add",
         "property": "property-runes",
         "value": "merciful"
       },
       {
-        "definition": [
-          "item:slug:turret-weapon"
-        ],
         "key": "AdjustStrike",
         "mode": "add",
         "property": "weapon-traits",

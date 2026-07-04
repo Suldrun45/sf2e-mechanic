@@ -14,7 +14,7 @@
         "diceNumber": 1,
         "dieSize": "d4",
         "key": "DamageDice",
-        "selector": "turret-weapon-damage"
+        "selector": "weapon-damage"
       },
       {
         "category": "persistent",
@@ -23,11 +23,11 @@
         "diceNumber": 4,
         "dieSize": "d4",
         "key": "DamageDice",
-        "selector": "turret-weapon-damage"
+        "selector": "weapon-damage"
       },
       {
         "key": "Note",
-        "selector": "turret-weapon-damage",
+        "selector": "weapon-damage",
         "text": "SF2E.SpecificRule.Equipment.Upgrades.Weapon.EntropicDestabilizer.Note",
         "title": "SF2E.SpecificRule.Equipment.Upgrades.Weapon.EntropicDestabilizer.LabelTactical"
       }

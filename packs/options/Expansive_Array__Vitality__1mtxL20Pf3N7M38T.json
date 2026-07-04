@@ -49,7 +49,7 @@
       {
         "key": "Note",
         "selector": [
-          "turret-weapon-damage"
+          "weapon-damage"
         ],
         "title": "Critical Specialization",
         "outcome": [
@@ -57,7 +57,13 @@
         ],
         "text": "The target must succeed at a @Check[fortitude|dc:resolve(@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level + 10)] or be @UUID[Compendium.sf2e.conditions.Item.TkIyaNPgTZFBCCuh]{Dazzled} until the start of your next turn",
         "predicate": [
-          "arrays:vitality"
+          "arrays:vitality",
+          {
+            "gte": [
+              "self:level",
+              5
+            ]
+          }
         ]
       }
     ],

@@ -45,7 +45,6 @@
       {
         "key": "DamageAlteration",
         "selectors": [
-          "turret-weapon-damage",
           "weapon-damage"
         ],
         "predicate": [

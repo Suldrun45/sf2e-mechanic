@@ -21,7 +21,7 @@
             "not": "check:outcome:critical-success"
           }
         ],
-        "selector": "turret-weapon-damage"
+        "selector": "weapon-damage"
       },
       {
         "critical": true,
@@ -29,14 +29,14 @@
         "diceNumber": 2,
         "dieSize": "d10",
         "key": "DamageDice",
-        "selector": "turret-weapon-damage"
+        "selector": "weapon-damage"
       },
       {
         "key": "Note",
         "outcome": [
           "criticalSuccess"
         ],
-        "selector": "turret-weapon-damage",
+        "selector": "weapon-damage",
         "text": "SF2E.SpecificRule.Equipment.Upgrades.Weapon.ShockModule.CriticalNote",
         "title": "SF2E.SpecificRule.Equipment.Upgrades.Weapon.ShockModule.LabelTactical"
       }

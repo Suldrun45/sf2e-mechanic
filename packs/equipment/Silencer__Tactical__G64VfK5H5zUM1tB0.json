@@ -14,7 +14,7 @@
         "outcome": [
           "criticalSuccess"
         ],
-        "selector": "{item|parentItem.id}-damage",
+        "selector": "weapon-damage",
         "text": "SF2E.SpecificRule.Equipment.Upgrades.Weapon.Silencer.CriticalNoteTactical",
         "title": "SF2E.SpecificRule.Equipment.Upgrades.Weapon.Silencer.LabelTactical"
       }

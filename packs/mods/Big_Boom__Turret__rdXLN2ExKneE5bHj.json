@@ -12,7 +12,7 @@
       {
         "key": "Note",
         "selector": [
-          "turret-weapon-attack-roll"
+          "weapon-attack-roll"
         ],
         "title": "Big Boom",
         "text": "You know how to cram a lot of explosives and accelerant into a small package. Increase the item’s radius by 5 feet (if it’s a burst), its area by 5 feet (if it’s a cone), or its area by 10 feet (if it’s a line)."

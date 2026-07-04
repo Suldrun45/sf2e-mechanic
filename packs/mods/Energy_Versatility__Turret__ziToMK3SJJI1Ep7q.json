@@ -38,7 +38,9 @@
       {
         "key": "DamageAlteration",
         "selectors": [
-          "turret-weapon-damage"
+          "turret-weapon-damage",
+          "area-denial-turret-cone-damage",
+          "area-denial-turret-line-damage"
         ],
         "property": "damage-type",
         "mode": "override",

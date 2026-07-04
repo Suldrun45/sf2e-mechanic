@@ -14,7 +14,7 @@
         "outcome": [
           "criticalSuccess"
         ],
-        "selector": "turret-weapon-damage",
+        "selector": "weapon-damage",
         "text": "SF2E.SpecificRule.Equipment.Upgrades.Weapon.FearProjector.CriticalNoteCommercial",
         "title": "SF2E.SpecificRule.Equipment.Upgrades.Weapon.FearProjector.LabelCommercial"
       }

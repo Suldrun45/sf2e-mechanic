@@ -14,7 +14,7 @@
         "diceNumber": 1,
         "dieSize": "d6",
         "key": "DamageDice",
-        "selector": "turret-weapon-damage"
+        "selector": "weapon-damage"
       },
       {
         "category": "persistent",
@@ -23,7 +23,7 @@
         "diceNumber": 1,
         "dieSize": "d10",
         "key": "DamageDice",
-        "selector": "turret-weapon-damage"
+        "selector": "weapon-damage"
       }
     ],
     "slug": "flaming-module-commercial",

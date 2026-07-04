@@ -22,7 +22,9 @@
       {
         "key": "Note",
         "selector": [
-          "turret-weapon-damage"
+          "turret-weapon-damage",
+          "area-denial-turret-cone-damage",
+          "area-denial-turret-line-damage"
         ],
         "title": "Shockwave Pulse",
         "text": "{item|description}"

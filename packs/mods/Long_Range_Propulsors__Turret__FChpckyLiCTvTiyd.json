@@ -9,9 +9,6 @@
     },
     "rules": [
       {
-        "definition": [
-          "item:slug:turret-weapon"
-        ],
         "key": "AdjustStrike",
         "mode": "add",
         "property": "range-increment",

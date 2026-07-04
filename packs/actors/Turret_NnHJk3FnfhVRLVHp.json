@@ -160,7 +160,8 @@
         "authors": "",
         "license": "OGL",
         "remaster": false
-      }
+      },
+      "alliance": "party"
     },
     "resources": {},
     "_migration": {
@@ -338,7 +339,7 @@
           "previous": null
         },
         "description": {
-          "value": "",
+          "value": "<p>Range must be set manually based on the Weapon Array</p>",
           "gm": ""
         },
         "publication": {
@@ -347,153 +348,8 @@
           "license": "ORC",
           "remaster": true
         },
-        "rules": [
-          {
-            "key": "RollOption",
-            "label": "Weapon Grade",
-            "option": "weapon-grade",
-            "toggleable": true,
-            "alwaysActive": true,
-            "suboptions": [
-              {
-                "label": "Commercial",
-                "value": "commercial"
-              },
-              {
-                "label": "Tactical",
-                "value": "tactical"
-              },
-              {
-                "label": "Advanced",
-                "value": "Advanced"
-              },
-              {
-                "label": "Superior",
-                "value": "superior"
-              },
-              {
-                "label": "Elite",
-                "value": "elite"
-              },
-              {
-                "label": "Ultimate",
-                "value": "ultimate"
-              },
-              {
-                "label": "Paragon",
-                "value": "paragon"
-              }
-            ],
-            "value": true,
-            "selection": "commercial"
-          },
-          {
-            "key": "ActiveEffectLike",
-            "path": "flags.system.turret.damage",
-            "mode": "override",
-            "value": {
-              "diceNumber": 1,
-              "strikeBonus": 0
-            },
-            "predicate": [
-              "weapon-grade:commercial"
-            ]
-          },
-          {
-            "key": "ActiveEffectLike",
-            "path": "flags.system.turret.damage",
-            "mode": "override",
-            "value": {
-              "diceNumber": 1,
-              "strikeBonus": 1
-            },
-            "predicate": [
-              "weapon-grade:tactical"
-            ]
-          },
-          {
-            "key": "ActiveEffectLike",
-            "path": "flags.system.turret.damage",
-            "mode": "override",
-            "value": {
-              "diceNumber": 2,
-              "strikeBonus": 1
-            },
-            "predicate": [
-              "weapon-grade:advanced"
-            ]
-          },
-          {
-            "key": "ActiveEffectLike",
-            "path": "flags.system.turret.damage",
-            "mode": "override",
-            "value": {
-              "diceNumber": 2,
-              "strikeBonus": 2
-            },
-            "predicate": [
-              "weapon-grade:superior"
-            ]
-          },
-          {
-            "key": "ActiveEffectLike",
-            "path": "flags.system.turret.damage",
-            "mode": "override",
-            "value": {
-              "diceNumber": 3,
-              "strikeBonus": 2
-            },
-            "predicate": [
-              "weapon-grade:elite"
-            ]
-          },
-          {
-            "key": "ActiveEffectLike",
-            "path": "flags.system.turret.damage",
-            "mode": "override",
-            "value": {
-              "diceNumber": 3,
-              "strikeBonus": 3
-            },
-            "predicate": [
-              "weapon-grade:ultimate"
-            ]
-          },
-          {
-            "key": "ActiveEffectLike",
-            "path": "flags.system.turret.damage",
-            "mode": "override",
-            "value": {
-              "diceNumber": 4,
-              "strikeBonus": 3
-            },
-            "predicate": [
-              "weapon-grade:paragon"
-            ]
-          },
-          {
-            "key": "FlatModifier",
-            "label": "Weapon Grade",
-            "value": "@actor.flags.system.turret.damage.strikeBonus",
-            "selector": [
-              "turret-weapon-attack-roll"
-            ],
-            "type": "item"
-          },
-          {
-            "key": "DamageAlteration",
-            "selectors": [
-              "turret-weapon-damage"
-            ],
-            "property": "dice-number",
-            "mode": "override",
-            "value": "@actor.flags.system.turret.damage.diceNumber",
-            "predicate": [
-              "dice:slug:base"
-            ]
-          }
-        ],
-        "slug": null,
+        "rules": [],
+        "slug": "turret-weapon",
         "traits": {
           "otherTags": [],
           "value": [],
@@ -515,7 +371,7 @@
           "value": []
         },
         "range": {
-          "increment": 60,
+          "increment": 90,
           "max": null
         },
         "subjectToMAP": true
@@ -541,7 +397,7 @@
     },
     {
       "type": "action",
-      "name": "Arrays",
+      "name": "Weapon Arrays",
       "system": {
         "actionType": {
           "value": "passive"
@@ -559,7 +415,7 @@
         "rules": [
           {
             "key": "RollOption",
-            "label": "Array",
+            "label": "Weapon Array",
             "toggleable": true,
             "option": "arrays",
             "alwaysActive": true,
@@ -682,7 +538,9 @@
             "mode": "override",
             "property": "damage-type",
             "selectors": [
-              "turret-weapon-damage"
+              "turret-weapon-damage",
+              "area-denial-turret-cone-damage",
+              "area-denial-turret-line-damage"
             ],
             "value": "{actor|flags.system.turret.array.damageType}",
             "predicate": [
@@ -693,13 +551,12 @@
             "key": "AdjustStrike",
             "mode": "add",
             "property": "weapon-traits",
-            "value": "{actor|flags.system.turret.array.trait}"
-          },
-          {
-            "key": "AdjustStrike",
-            "mode": "override",
-            "property": "range-increment",
-            "value": "{actor|flags.system.turret.array.range}"
+            "value": "{actor|flags.system.turret.array.trait}",
+            "definition": [
+              "item:slug:turret-weapon",
+              "item:slug:area-denial-turret-cone",
+              "item:slug:area-denial-turret-line"
+            ]
           },
           {
             "key": "FlatModifier",
@@ -731,7 +588,13 @@
             ],
             "text": "The target must succeed at a @Check[fortitude|dc:resolve(@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level + 10)] or be @UUID[Compendium.sf2e.conditions.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the start of your next turn",
             "predicate": [
-              "arrays:chaingun"
+              "arrays:chaingun",
+              {
+                "gte": [
+                  "self:level",
+                  5
+                ]
+              }
             ]
           },
           {
@@ -743,23 +606,55 @@
             "damageType": "acid",
             "category": "persistent",
             "predicate": [
-              "arrays:disintegrator"
+              "arrays:disintegrator",
+              {
+                "gte": [
+                  "self:level",
+                  5
+                ]
+              }
             ],
-            "hideIfDisabled": true
+            "hideIfDisabled": true,
+            "label": "Critical Specialization"
           },
           {
             "key": "FlatModifier",
             "selector": [
               "turret-weapon-damage"
             ],
-            "value": "@actor.flags.system.turret.damage.diceNumber",
+            "value": "@actor.flags.system.turret.damage.strikeBonus",
             "damageCategory": "persistent",
             "damageType": "acid",
             "predicate": [
-              "arrays:disintegrator"
+              "arrays:disintegrator",
+              {
+                "gte": [
+                  "self:level",
+                  5
+                ]
+              }
             ],
             "critical": true,
-            "hideIfDisabled": true
+            "hideIfDisabled": true,
+            "label": "Critical Specialization"
+          },
+          {
+            "key": "Note",
+            "text": "The target takes @Damage[1d6[acid,persistent]]. You gain an item bonus to this acid damage equal to the weapon's item bonus to attack rolls.",
+            "predicate": [
+              "arrays:disintegrator",
+              {
+                "gte": [
+                  "self:level",
+                  5
+                ]
+              }
+            ],
+            "selector": [
+              "area-denial-turret-cone-damage",
+              "area-denial-turret-line-damage"
+            ],
+            "title": "Critical Specialization"
           },
           {
             "key": "Note",
@@ -772,7 +667,13 @@
             ],
             "text": "The target must succeed at a @Check[fortitude|dc:resolve(@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level + 10)] or be @UUID[Compendium.sf2e.conditions.Item.TkIyaNPgTZFBCCuh]{Dazzled} until the start of your next turn",
             "predicate": [
-              "arrays:laser-beam"
+              "arrays:laser-beam",
+              {
+                "gte": [
+                  "self:level",
+                  5
+                ]
+              }
             ]
           },
           {
@@ -786,7 +687,13 @@
             ],
             "text": "The target must succeed at a @Check[fortitude|dc:resolve(@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level + 10)] or be @UUID[Compendium.sf2e.conditions.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute",
             "predicate": [
-              "arrays:thunderclap"
+              "arrays:thunderclap",
+              {
+                "gte": [
+                  "self:level",
+                  5
+                ]
+              }
             ]
           },
           {
@@ -800,7 +707,13 @@
             ],
             "text": "The target must succeed at a @Check[fortitude|dc:resolve(@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level + 10)] or be @UUID[Compendium.sf2e.conditions.Item.dfCMdR4wnpbYNTix]{Stunned 1}",
             "predicate": [
-              "arrays:volt-thrower"
+              "arrays:volt-thrower",
+              {
+                "gte": [
+                  "self:level",
+                  5
+                ]
+              }
             ]
           },
           {
@@ -814,7 +727,13 @@
             ],
             "text": "This weapon freezes part of the target, making it hard for them to move their body. The target is @UUID[Compendium.sf2e.conditions.Item.i3OJZU2nk64Df3xm]{Clumsy 1} until the start of your next turn.",
             "predicate": [
-              "arrays:zero-emitter"
+              "arrays:zero-emitter",
+              {
+                "gte": [
+                  "self:level",
+                  5
+                ]
+              }
             ]
           }
         ],
@@ -966,6 +885,343 @@
         "exportSource": null
       },
       "_key": "!actors.items!NnHJk3FnfhVRLVHp.PPdHoqYb1Vw6O3sI"
+    },
+    {
+      "type": "melee",
+      "name": "Area Denial Turret (Cone)",
+      "effects": [],
+      "system": {
+        "_migration": {
+          "version": 0.959,
+          "previous": null
+        },
+        "description": {
+          "value": "<p>Area Range must be set manually based on the Weapon Array</p><p>Save DC must be set manually based on the Class DC and the Weapon Grade</p>",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [],
+        "slug": "area-denial-turret-cone",
+        "traits": {
+          "otherTags": [],
+          "value": [],
+          "config": {}
+        },
+        "action": "area-fire",
+        "area": {
+          "value": 45,
+          "type": "cone"
+        },
+        "damageRolls": {
+          "Oc4H3DfV4cqVLaSk": {
+            "damage": "1d8",
+            "damageType": "piercing",
+            "category": null
+          }
+        },
+        "bonus": {
+          "value": 0
+        },
+        "attackEffects": {
+          "value": []
+        },
+        "range": null,
+        "subjectToMAP": true
+      },
+      "_id": "jCrTD99J0y22yg8O",
+      "img": "systems/sf2e/icons/default-icons/melee.svg",
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "KQrTwr8CCXT32xPE": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "sf2e",
+        "systemVersion": "1.2.0",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!NnHJk3FnfhVRLVHp.jCrTD99J0y22yg8O"
+    },
+    {
+      "type": "melee",
+      "name": "Area Denial Turret (Line)",
+      "effects": [],
+      "system": {
+        "_migration": {
+          "version": 0.959,
+          "previous": null
+        },
+        "description": {
+          "value": "<p>Area Range must be set manually based on the Weapon Array</p><p>Save DC must be set manually based on the Class DC and the Weapon Grade</p>",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [],
+        "slug": "area-denial-turret-line",
+        "traits": {
+          "otherTags": [],
+          "value": [],
+          "config": {}
+        },
+        "action": "area-fire",
+        "area": {
+          "value": 45,
+          "type": "line"
+        },
+        "damageRolls": {
+          "fUUdpm5WPih4LlaR": {
+            "damage": "1d8",
+            "damageType": "piercing",
+            "category": null
+          }
+        },
+        "bonus": {
+          "value": 0
+        },
+        "attackEffects": {
+          "value": []
+        },
+        "range": null,
+        "subjectToMAP": true
+      },
+      "_id": "fXli9L1iVZilXdVC",
+      "img": "systems/sf2e/icons/default-icons/melee.svg",
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "KQrTwr8CCXT32xPE": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "sf2e",
+        "systemVersion": "1.2.0",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!NnHJk3FnfhVRLVHp.fXli9L1iVZilXdVC"
+    },
+    {
+      "type": "action",
+      "name": "Weapon Grade",
+      "system": {
+        "actionType": {
+          "value": "passive"
+        },
+        "description": {
+          "value": "",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [
+          {
+            "key": "RollOption",
+            "label": "Weapon Grade",
+            "option": "weapon-grade",
+            "toggleable": true,
+            "alwaysActive": true,
+            "suboptions": [
+              {
+                "label": "Commercial",
+                "value": "commercial"
+              },
+              {
+                "label": "Tactical",
+                "value": "tactical"
+              },
+              {
+                "label": "Advanced",
+                "value": "Advanced"
+              },
+              {
+                "label": "Superior",
+                "value": "superior"
+              },
+              {
+                "label": "Elite",
+                "value": "elite"
+              },
+              {
+                "label": "Ultimate",
+                "value": "ultimate"
+              },
+              {
+                "label": "Paragon",
+                "value": "paragon"
+              }
+            ],
+            "value": true,
+            "selection": "commercial"
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 1,
+              "strikeBonus": 0
+            },
+            "predicate": [
+              "weapon-grade:commercial"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 1,
+              "strikeBonus": 1
+            },
+            "predicate": [
+              "weapon-grade:tactical"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 2,
+              "strikeBonus": 1
+            },
+            "predicate": [
+              "weapon-grade:advanced"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 2,
+              "strikeBonus": 2
+            },
+            "predicate": [
+              "weapon-grade:superior"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 3,
+              "strikeBonus": 2
+            },
+            "predicate": [
+              "weapon-grade:elite"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 3,
+              "strikeBonus": 3
+            },
+            "predicate": [
+              "weapon-grade:ultimate"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 4,
+              "strikeBonus": 3
+            },
+            "predicate": [
+              "weapon-grade:paragon"
+            ],
+            "phase": "beforeDerived"
+          },
+          {
+            "key": "FlatModifier",
+            "label": "Weapon Grade",
+            "value": "@actor.flags.system.turret.damage.strikeBonus",
+            "selector": [
+              "turret-weapon-attack-roll"
+            ],
+            "type": "item"
+          },
+          {
+            "key": "DamageAlteration",
+            "selectors": [
+              "turret-weapon-damage",
+              "area-denial-turret-cone-damage",
+              "area-denial-turret-line-damage"
+            ],
+            "property": "dice-number",
+            "mode": "override",
+            "value": "@actor.flags.system.turret.damage.diceNumber",
+            "predicate": [
+              "dice:slug:base"
+            ]
+          }
+        ],
+        "slug": null,
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
+        "_migration": {
+          "version": 0.959,
+          "previous": {
+            "schema": null,
+            "foundry": "14.364",
+            "system": "1.2.0"
+          }
+        },
+        "actions": {
+          "value": null
+        },
+        "category": null,
+        "deathNote": false
+      },
+      "effects": [],
+      "_id": "UOpGqbboJvHkUn7h",
+      "img": "systems/sf2e/icons/default-icons/action.svg",
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "KQrTwr8CCXT32xPE": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "sf2e",
+        "systemVersion": "1.2.0",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!NnHJk3FnfhVRLVHp.UOpGqbboJvHkUn7h"
     }
   ],
   "folder": null,

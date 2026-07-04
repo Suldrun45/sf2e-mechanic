@@ -14,14 +14,14 @@
         "diceNumber": 1,
         "dieSize": "d6",
         "key": "DamageDice",
-        "selector": "turret-weapon-damage"
+        "selector": "weapon-damage"
       },
       {
         "key": "Note",
         "outcome": [
           "criticalSuccess"
         ],
-        "selector": "turret-weapon-damage",
+        "selector": "weapon-damage",
         "text": "SF2E.SpecificRule.Equipment.Upgrades.Weapon.Loudener.CriticalNoteCommercial",
         "title": "SF2E.SpecificRule.Equipment.Upgrades.Weapon.Loudener.LabelCommercial"
       }

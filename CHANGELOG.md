@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.0.7
+Add options of Area Denial Turret
+
 ## Version 0.0.5
 Add Physical Versatility for Turrets
 

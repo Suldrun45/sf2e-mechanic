@@ -51,9 +51,6 @@
         "key": "AdjustStrike",
         "property": "materials",
         "value": "{item|flags.sf2e.rulesSelections.transmutativeCasing}",
-        "definition": [
-          "item:slug:turret-weapon"
-        ],
         "mode": "add"
       }
     ],

@@ -11,7 +11,7 @@
     "rules": [
       {
         "key": "FlatModifier",
-        "selector": "turret-weapon-damage",
+        "selector": "weapon-damage",
         "value": "@actor.system.abilities.int.mod"
       }
     ],

@@ -9,6 +9,8 @@
 
 # SF2e Mechanic - Automation for the SF2e Playtest Mechanic
 
+On Turrets, some options can't be automated, such as the changes in range increment of the weapon due to modifying the Weapon Array or to Moding, or the Save DC for the "Area Denial Turret" Area Effects. They must be modified manually directly on the Attack.
+
 Install it with the manifest URL: 
 
 https://github.com/Suldrun45/sf2e-mechanic/releases/latest/download/module.json

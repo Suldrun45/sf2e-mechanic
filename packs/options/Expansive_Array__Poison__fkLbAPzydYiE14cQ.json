@@ -49,29 +49,45 @@
       {
         "key": "DamageDice",
         "critical": true,
-        "selector": "turret-weapon-damage",
+        "selector": "weapon-damage",
         "diceNumber": 1,
         "dieSize": "d6",
         "damageType": "bleed",
         "category": "persistent",
         "predicate": [
-          "arrays:poison"
+          "arrays:poison",
+          {
+            "gte": [
+              "self:level",
+              5
+            ]
+          }
         ],
-        "hideIfDisabled": true
+        "hideIfDisabled": true,
+        "label": "Critical Specialization"
       },
       {
         "key": "FlatModifier",
         "selector": [
-          "turret-weapon-damage"
+          "turret-weapon-damage",
+          "area-denial-turret-cone-damage",
+          "area-denial-turret-line-damage"
         ],
-        "value": "@actor.flags.system.turret.damage.diceNumber",
+        "value": "@actor.flags.system.turret.damage.strikeBonus",
         "damageCategory": "persistent",
         "damageType": "bleed",
         "predicate": [
-          "arrays:poison"
+          "arrays:poison",
+          {
+            "gte": [
+              "self:level",
+              5
+            ]
+          }
         ],
         "critical": true,
-        "hideIfDisabled": true
+        "hideIfDisabled": true,
+        "label": "Critical Specialization"
       }
     ],
     "slug": "expansive-array-poison",

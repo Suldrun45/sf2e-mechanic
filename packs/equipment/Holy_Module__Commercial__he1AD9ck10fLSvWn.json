@@ -14,7 +14,7 @@
         "diceNumber": 1,
         "dieSize": "d4",
         "key": "DamageDice",
-        "selector": "turret-weapon-damage",
+        "selector": "weapon-damage",
         "slug": "holy-module"
       },
       {
@@ -25,7 +25,7 @@
         ],
         "property": "dice-number",
         "selectors": [
-          "turret-weapon-damage"
+          "weapon-damage"
         ],
         "slug": "holy-module",
         "value": 3
@@ -35,7 +35,7 @@
         "outcome": [
           "criticalSuccess"
         ],
-        "selector": "turret-weapon-damage",
+        "selector": "weapon-damage",
         "text": "SF2E.SpecificRule.Equipment.Upgrades.Weapon.HolyModule.CriticalNoteCommercial",
         "title": "SF2E.SpecificRule.Equipment.Upgrades.Weapon.HolyModule.LabelCommercial"
       }
