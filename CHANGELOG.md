@@ -1,6 +1,6 @@
 # Changelog
 
-## Version 0.0.8
+## Version 0.1.0
 Add automation for Deploying the Turret (shamelessly inspired from ChasarooniZ's PF2e Summons Assistant module https://github.com/ChasarooniZ/pf2e-summons-assistant)
 
 ## Version 0.0.7
