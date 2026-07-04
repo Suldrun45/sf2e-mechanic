@@ -1,0 +1,343 @@
+{
+  "name": "Expansive Array",
+  "type": "action",
+  "effects": [],
+  "system": {
+    "_migration": {
+      "version": 0.959,
+      "previous": null
+    },
+    "description": {
+      "value": "<p>You design additional custom arrays for your turret. Select two of the following arrays. Add the selected arrays to your list of available arrays.</p><ul><li><p>2d8 mental damage, range increment 60 feet, tech trait, mental weapon group</p></li><li><p>2d8 poison damage, range increment 60 feet, tech trait, dart weapon group</p></li><li><p>2d8 vitality damage, range increment 60 feet, tech trait, laser weapon group</p></li><li><p>2d8 void damage, range increment 60 feet, tech trait, void weapon group</p></li></ul><hr><p><strong>Special</strong> You can take this feat a second time. When you do, you must select different arrays.</p><p></p>",
+      "gm": ""
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "ORC",
+      "remaster": true
+    },
+    "rules": [
+      {
+        "key": "ChoiceSet",
+        "flag": "expansiveArray1",
+        "rollOption": "expansive-array",
+        "choices": [
+          {
+            "label": "Mental",
+            "value": "mental-array",
+            "predicate": [
+              {
+                "not": "expansive-array:mental-array"
+              }
+            ]
+          },
+          {
+            "label": "Poison",
+            "value": "poison-array",
+            "predicate": [
+              {
+                "not": "expansive-array:poison-array"
+              }
+            ]
+          },
+          {
+            "label": "Vitality",
+            "value": "vitality-array",
+            "predicate": [
+              {
+                "not": "expansive-array:vitality-array"
+              }
+            ]
+          },
+          {
+            "label": "Void",
+            "value": "void-array",
+            "predicate": [
+              {
+                "not": "expansive-array:void-array"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "ChoiceSet",
+        "flag": "expansiveArray2",
+        "rollOption": "expansive-array",
+        "choices": [
+          {
+            "label": "Mental",
+            "value": "mental-array",
+            "predicate": [
+              {
+                "not": "expansive-array:mental-array"
+              }
+            ]
+          },
+          {
+            "label": "Poison",
+            "value": "poison-array",
+            "predicate": [
+              {
+                "not": "expansive-array:poison-array"
+              }
+            ]
+          },
+          {
+            "label": "Vitality",
+            "value": "vitality-array",
+            "predicate": [
+              {
+                "not": "expansive-array:vitality-array"
+              }
+            ]
+          },
+          {
+            "label": "Void",
+            "value": "void-array",
+            "predicate": [
+              {
+                "not": "expansive-array:void-array"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "RollOption",
+        "label": "Array",
+        "toggleable": true,
+        "option": "arrays",
+        "alwaysActive": true,
+        "mergeable": true,
+        "suboptions": [
+          {
+            "label": "Mental",
+            "value": "mental",
+            "predicate": [
+              "expansive-array:mental-array"
+            ]
+          },
+          {
+            "label": "Poison",
+            "value": "poison",
+            "predicate": [
+              "expansive-array:poison-array"
+            ]
+          },
+          {
+            "label": "Vitality",
+            "value": "vitality",
+            "predicate": [
+              "expansive-array:vitality-array"
+            ]
+          },
+          {
+            "label": "Void",
+            "value": "void",
+            "predicate": [
+              "expansive-array:void-array"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "ActiveEffectLike",
+        "path": "flags.system.turret.array",
+        "mode": "override",
+        "value": {
+          "damageType": "mental",
+          "range": 60,
+          "trait": "tech",
+          "group": "mental"
+        },
+        "predicate": [
+          "arrays:mental"
+        ]
+      },
+      {
+        "key": "Note",
+        "selector": [
+          "weapon-damage"
+        ],
+        "title": "Critical Specialization",
+        "outcome": [
+          "criticalSuccess"
+        ],
+        "slug": "mental-array-critical",
+        "text": "The target must succeed at a @Check[will|dc:resolve(@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level + 10)] or be @UUID[Compendium.sf2e.conditions.Item.e1XGnhKNSQIm5IXg]{Stupefied 1} until the start of your next turn",
+        "predicate": [
+          "arrays:mental",
+          {
+            "gte": [
+              "self:level",
+              5
+            ]
+          },
+          {
+            "or": [
+              {
+                "eq": [
+                  "expansive-array:{item|flags.system.rulesSelections.expansiveArray1}",
+                  "expansive-array:mental-array"
+                ]
+              },
+              {
+                "eq": [
+                  "expansive-array:{item|flags.system.rulesSelections.expansiveArray2}",
+                  "expansive-array:mental-array"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "DamageDice",
+        "critical": true,
+        "selector": "weapon-damage",
+        "diceNumber": 1,
+        "dieSize": "d6",
+        "damageType": "bleed",
+        "category": "persistent",
+        "predicate": [
+          "arrays:poison",
+          {
+            "gte": [
+              "self:level",
+              5
+            ]
+          },
+          {
+            "or": [
+              {
+                "eq": [
+                  "expansive-array:{item|flags.system.rulesSelections.expansiveArray1}",
+                  "expansive-array:poison-array"
+                ]
+              },
+              {
+                "eq": [
+                  "expansive-array:{item|flags.system.rulesSelections.expansiveArray2}",
+                  "expansive-array:poison-array"
+                ]
+              }
+            ]
+          }
+        ],
+        "hideIfDisabled": true,
+        "label": "Critical Specialization",
+        "slug": "poison-array-critical"
+      },
+      {
+        "key": "FlatModifier",
+        "selector": [
+          "turret-weapon-damage",
+          "area-denial-turret-cone-damage",
+          "area-denial-turret-line-damage"
+        ],
+        "value": "@actor.flags.system.turret.damage.strikeBonus",
+        "damageCategory": "persistent",
+        "damageType": "bleed",
+        "predicate": [
+          "arrays:poison",
+          {
+            "gte": [
+              "self:level",
+              5
+            ]
+          },
+          {
+            "or": [
+              {
+                "eq": [
+                  "expansive-array:{item|flags.system.rulesSelections.expansiveArray1}",
+                  "expansive-array:poison-array"
+                ]
+              },
+              {
+                "eq": [
+                  "expansive-array:{item|flags.system.rulesSelections.expansiveArray2}",
+                  "expansive-array:poison-array"
+                ]
+              }
+            ]
+          }
+        ],
+        "critical": true,
+        "hideIfDisabled": true,
+        "label": "Critical Specialization",
+        "slug": "poison-array-critical-modifier"
+      },
+      {
+        "key": "Note",
+        "selector": [
+          "weapon-damage"
+        ],
+        "title": "Critical Specialization",
+        "slug": "critical-vitality-array",
+        "outcome": [
+          "criticalSuccess"
+        ],
+        "text": "The target must succeed at a @Check[fortitude|dc:resolve(@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level + 10)] or be @UUID[Compendium.sf2e.conditions.Item.TkIyaNPgTZFBCCuh]{Dazzled} until the start of your next turn",
+        "predicate": [
+          "arrays:vitality",
+          {
+            "gte": [
+              "self:level",
+              5
+            ]
+          },
+          {
+            "or": [
+              {
+                "eq": [
+                  "expansive-array:{item|flags.system.rulesSelections.expansiveArray1}",
+                  "expansive-array:vitality-array"
+                ]
+              },
+              {
+                "eq": [
+                  "expansive-array:{item|flags.system.rulesSelections.expansiveArray2}",
+                  "expansive-array:vitality-array"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "slug": "expansive-array",
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "actionType": {
+      "value": "passive"
+    },
+    "actions": {
+      "value": null
+    },
+    "category": null,
+    "deathNote": false
+  },
+  "_id": "6Vzs8mKnK47sVy2w",
+  "img": "systems/sf2e/icons/actions/Passive.webp",
+  "folder": null,
+  "ownership": {
+    "default": 0,
+    "KQrTwr8CCXT32xPE": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "exportSource": null,
+    "compendiumSource": null,
+    "duplicateSource": null
+  },
+  "sort": 0,
+  "_key": "!items!6Vzs8mKnK47sVy2w"
+}
