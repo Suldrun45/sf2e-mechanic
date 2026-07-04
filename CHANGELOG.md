@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.1.3
+Refactor Expansive Array
+
 ## Version 0.1.2
 Add automation to apply automatically Multidisciplinary Mechanic to Mines
 
