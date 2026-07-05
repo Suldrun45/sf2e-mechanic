@@ -163,7 +163,11 @@
       },
       "alliance": "party"
     },
-    "resources": {},
+    "resources": {
+      "dc": {
+        "value": 13
+      }
+    },
     "_migration": {
       "version": 0.959,
       "previous": {
@@ -231,105 +235,6 @@
   "img": "systems/sf2e/icons/default-icons/npc.svg",
   "items": [
     {
-      "type": "action",
-      "name": "Turret Defenses",
-      "system": {
-        "actionType": {
-          "value": "passive"
-        },
-        "description": {
-          "value": "<p><span style=\"font-family:Roboto, sans-serif\">Your turret's level is equal to your level, its AC is equal to your mechanic class DC, and it has Hardness equal to half your level (rounded up).</span></p><p><span style=\"font-family:Roboto, sans-serif\">It has trained proficiency in Reflex and Fortitude saves, using your Intelligence modifier to calculate these bonuses.</span></p><p><span style=\"font-family:Roboto, sans-serif\">It has 6 Hit Points, plus a number of Hit Points equal to 2 plus your Intelligence modifier for each level you have. Its Broken Threshold is equal to half its total Hit Points (rounded down).</span></p><p><span style=\"font-family:Roboto, sans-serif\">During your daily preparations, you automatically repair your turret, restoring it to maximum Hit Points. If your turret is destroyed, the next time you Deploy Turret, you deploy a repaired turret with maximum Hit Points.</span></p><p><span style=\"font-family:Roboto, sans-serif\">At 5th level, your turret's Hardness increases to 10. At 10th level, it increases to 15 and its proficiency rank in Reflex and Fortitude saves increases to expert. At 15th level, its Hardness increases to 20, and its proficiency rank in Reflex and Fortitude saves increases to master.</span></p>",
-          "gm": ""
-        },
-        "publication": {
-          "title": "",
-          "authors": "",
-          "license": "OGL",
-          "remaster": false
-        },
-        "rules": [
-          {
-            "key": "FlatModifier",
-            "selector": "hp",
-            "value": "(6 + @actor.abilities.int.mod + 2) * @actor.level",
-            "type": "proficiency",
-            "label": "Turret HP"
-          },
-          {
-            "key": "FlatModifier",
-            "selector": [
-              "ac"
-            ],
-            "value": "@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level",
-            "type": "proficiency",
-            "label": "Turret AC"
-          },
-          {
-            "key": "ActiveEffectLike",
-            "mode": "add",
-            "path": "system.attributes.hardness.value",
-            "phase": "afterDerived",
-            "value": "ternary(gte(@actor.level, 15), 20, ternary(gte(@actor.level, 10), 15, ternary(gte(@actor.level, 5), 10, ceil(@actor.level / 2))))"
-          },
-          {
-            "key": "FlatModifier",
-            "selector": [
-              "reflex",
-              "fortitude"
-            ],
-            "value": "@actor.abilities.int.mod + @actor.level",
-            "label": "Turret Saves"
-          },
-          {
-            "key": "FlatModifier",
-            "selector": [
-              "reflex",
-              "fortitude"
-            ],
-            "value": "ternary(gte(@actor.level, 15), 6, ternary(gte(@actor.level, 10), 4, 2))",
-            "label": "Turret Saves Proficiency",
-            "type": "proficiency"
-          }
-        ],
-        "slug": "turret-defenses",
-        "traits": {
-          "otherTags": [],
-          "value": []
-        },
-        "_migration": {
-          "version": 0.959,
-          "previous": {
-            "schema": 0.94,
-            "foundry": "14.364",
-            "system": "1.2.0"
-          }
-        },
-        "actions": {
-          "value": null
-        },
-        "category": "defensive",
-        "deathNote": false
-      },
-      "effects": [],
-      "_id": "pb95rhNpZKMLw6OY",
-      "img": "systems/sf2e/icons/default-icons/action.svg",
-      "folder": null,
-      "sort": 200000,
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.364",
-        "systemId": "sf2e",
-        "systemVersion": "1.2.0",
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "ownership": {
-        "default": 0
-      },
-      "_key": "!actors.items!NnHJk3FnfhVRLVHp.pb95rhNpZKMLw6OY"
-    },
-    {
       "type": "melee",
       "name": "Turret Weapon",
       "effects": [],
@@ -339,7 +244,7 @@
           "previous": null
         },
         "description": {
-          "value": "<p>Range must be set manually based on the Weapon Array</p>",
+          "value": "",
           "gm": ""
         },
         "publication": {
@@ -396,14 +301,350 @@
       "_key": "!actors.items!NnHJk3FnfhVRLVHp.6B6kX8XbUb2wi0TE"
     },
     {
-      "type": "action",
-      "name": "Weapon Arrays",
+      "type": "melee",
+      "name": "Area Denial Turret (Cone)",
+      "effects": [],
       "system": {
+        "_migration": {
+          "version": 0.959,
+          "previous": null
+        },
+        "description": {
+          "value": "",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [],
+        "slug": "area-denial-turret-cone",
+        "traits": {
+          "otherTags": [],
+          "value": [],
+          "config": {}
+        },
+        "action": "area-fire",
+        "area": {
+          "value": 45,
+          "type": "cone"
+        },
+        "damageRolls": {
+          "Oc4H3DfV4cqVLaSk": {
+            "damage": "1d8",
+            "damageType": "piercing",
+            "category": null
+          }
+        },
+        "bonus": {
+          "value": 0
+        },
+        "attackEffects": {
+          "value": []
+        },
+        "range": null,
+        "subjectToMAP": true
+      },
+      "_id": "jCrTD99J0y22yg8O",
+      "img": "systems/sf2e/icons/default-icons/melee.svg",
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "KQrTwr8CCXT32xPE": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "sf2e",
+        "systemVersion": "1.2.0",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!NnHJk3FnfhVRLVHp.jCrTD99J0y22yg8O"
+    },
+    {
+      "type": "melee",
+      "name": "Area Denial Turret (Line)",
+      "effects": [],
+      "system": {
+        "_migration": {
+          "version": 0.959,
+          "previous": null
+        },
+        "description": {
+          "value": "",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [],
+        "slug": "area-denial-turret-line",
+        "traits": {
+          "otherTags": [],
+          "value": [],
+          "config": {}
+        },
+        "action": "area-fire",
+        "area": {
+          "value": 45,
+          "type": "line"
+        },
+        "damageRolls": {
+          "fUUdpm5WPih4LlaR": {
+            "damage": "1d8",
+            "damageType": "piercing",
+            "category": null
+          }
+        },
+        "bonus": {
+          "value": 0
+        },
+        "attackEffects": {
+          "value": []
+        },
+        "range": null,
+        "subjectToMAP": true
+      },
+      "_id": "fXli9L1iVZilXdVC",
+      "img": "systems/sf2e/icons/default-icons/melee.svg",
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "KQrTwr8CCXT32xPE": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "sf2e",
+        "systemVersion": "1.2.0",
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_key": "!actors.items!NnHJk3FnfhVRLVHp.fXli9L1iVZilXdVC"
+    },
+    {
+      "folder": "wur9SwXZtBosQYEC",
+      "name": "Weapon Grade",
+      "type": "action",
+      "effects": [],
+      "system": {
+        "_migration": {
+          "version": 0.959,
+          "previous": null
+        },
+        "description": {
+          "value": "",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [
+          {
+            "key": "RollOption",
+            "label": "Weapon Grade",
+            "option": "weapon-grade",
+            "toggleable": true,
+            "alwaysActive": true,
+            "suboptions": [
+              {
+                "label": "Commercial",
+                "value": "commercial"
+              },
+              {
+                "label": "Tactical",
+                "value": "tactical"
+              },
+              {
+                "label": "Advanced",
+                "value": "Advanced"
+              },
+              {
+                "label": "Superior",
+                "value": "superior"
+              },
+              {
+                "label": "Elite",
+                "value": "elite"
+              },
+              {
+                "label": "Ultimate",
+                "value": "ultimate"
+              },
+              {
+                "label": "Paragon",
+                "value": "paragon"
+              }
+            ],
+            "value": true,
+            "selection": "commercial"
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 1,
+              "strikeBonus": 0
+            },
+            "predicate": [
+              "weapon-grade:commercial"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 1,
+              "strikeBonus": 1
+            },
+            "predicate": [
+              "weapon-grade:tactical"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 2,
+              "strikeBonus": 1
+            },
+            "predicate": [
+              "weapon-grade:advanced"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 2,
+              "strikeBonus": 2
+            },
+            "predicate": [
+              "weapon-grade:superior"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 3,
+              "strikeBonus": 2
+            },
+            "predicate": [
+              "weapon-grade:elite"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 3,
+              "strikeBonus": 3
+            },
+            "predicate": [
+              "weapon-grade:ultimate"
+            ]
+          },
+          {
+            "key": "ActiveEffectLike",
+            "path": "flags.system.turret.damage",
+            "mode": "override",
+            "value": {
+              "diceNumber": 4,
+              "strikeBonus": 3
+            },
+            "predicate": [
+              "weapon-grade:paragon"
+            ],
+            "phase": "beforeDerived"
+          },
+          {
+            "key": "FlatModifier",
+            "label": "Weapon Grade",
+            "value": "@actor.flags.system.turret.damage.strikeBonus",
+            "selector": [
+              "turret-weapon-attack-roll"
+            ],
+            "type": "item"
+          },
+          {
+            "key": "DamageAlteration",
+            "selectors": [
+              "turret-weapon-damage",
+              "area-denial-turret-cone-damage",
+              "area-denial-turret-line-damage"
+            ],
+            "property": "dice-number",
+            "mode": "override",
+            "value": "@actor.flags.system.turret.damage.diceNumber",
+            "predicate": [
+              "dice:slug:base"
+            ]
+          }
+        ],
+        "slug": "weapon-grade",
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
         "actionType": {
           "value": "passive"
         },
+        "actions": {
+          "value": null
+        },
+        "category": null,
+        "deathNote": false
+      },
+      "img": "systems/sf2e/icons/actions/Passive.webp",
+      "sort": 100000,
+      "ownership": {
+        "default": 0,
+        "KQrTwr8CCXT32xPE": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "sf2e",
+        "systemVersion": "1.2.0",
+        "compendiumSource": "Compendium.sf2e-mechanic.options.Item.4btrr2Wj8CuUPE4j",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_id": "OTGTVSy5XHebXURn",
+      "_key": "!actors.items!NnHJk3FnfhVRLVHp.OTGTVSy5XHebXURn"
+    },
+    {
+      "folder": "wur9SwXZtBosQYEC",
+      "name": "Weapon Arrays",
+      "type": "action",
+      "effects": [],
+      "system": {
+        "_migration": {
+          "version": 0.959,
+          "previous": null
+        },
         "description": {
-          "value": "<p>Select one of the following arrays for your turret, which determines its  damage type and range increment. You can spend 10 minutes modifying your turret using your custom rig to change its selected array.</p><ul><li><p><strong>Chaingun:</strong> 1d8 piercing damage, range increment 90 feet, analog trait, projectile weapon group</p></li><li><p><strong>Disintegrator:</strong> 1d8 acid damage, range increment 60 feet, tech trait, corrosive weapon group</p></li><li><p><strong>Laser Beam:</strong> 1d8 fire damage, range increment 60 feet, tech trait, laser weapon group</p></li><li><p><strong>Thunderclap:</strong> 1d8 sonic damage, range increment 60 feet, tech trait, sonic weapon group</p></li><li><p><strong>Volt Thrower:</strong> 1d8 electricity damage, range increment 60 feet, tech trait, shock weapon group</p></li><li><p><strong>Zero Emitter:</strong> 1d8 cold damage, range increment 60 feet, tech trait, cryo weapon group</p></li></ul>",
+          "value": "<p>Select one of the following arrays for your turret, which determines its damage type and range increment. You can spend 10 minutes modifying your turret using your custom rig to change its selected array.</p><ul><li><p><strong>Chaingun:</strong> 1d8 piercing damage, range increment 90 feet, analog trait, projectile weapon group</p></li><li><p><strong>Disintegrator:</strong> 1d8 acid damage, range increment 60 feet, tech trait, corrosive weapon group</p></li><li><p><strong>Laser Beam:</strong> 1d8 fire damage, range increment 60 feet, tech trait, laser weapon group</p></li><li><p><strong>Thunderclap:</strong> 1d8 sonic damage, range increment 60 feet, tech trait, sonic weapon group</p></li><li><p><strong>Volt Thrower:</strong> 1d8 electricity damage, range increment 60 feet, tech trait, shock weapon group</p></li><li><p><strong>Zero Emitter:</strong> 1d8 cold damage, range increment 60 feet, tech trait, cryo weapon group</p></li></ul>",
           "gm": ""
         },
         "publication": {
@@ -552,6 +793,17 @@
             "mode": "add",
             "property": "weapon-traits",
             "value": "{actor|flags.system.turret.array.trait}",
+            "definition": [
+              "item:slug:turret-weapon",
+              "item:slug:area-denial-turret-cone",
+              "item:slug:area-denial-turret-line"
+            ]
+          },
+          {
+            "key": "AdjustStrike",
+            "mode": "add",
+            "property": "weapon-group",
+            "value": "{actor|flags.system.turret.array.group}",
             "definition": [
               "item:slug:turret-weapon",
               "item:slug:area-denial-turret-cone",
@@ -737,18 +989,13 @@
             ]
           }
         ],
-        "slug": "arrays",
+        "slug": "weapon-arrays",
         "traits": {
           "otherTags": [],
           "value": []
         },
-        "_migration": {
-          "version": 0.959,
-          "previous": {
-            "schema": null,
-            "foundry": "14.364",
-            "system": "1.2.0"
-          }
+        "actionType": {
+          "value": "passive"
         },
         "actions": {
           "value": null
@@ -756,32 +1003,129 @@
         "category": null,
         "deathNote": false
       },
-      "effects": [],
-      "_id": "aQjDCjRVPBQ4PKOq",
-      "img": "systems/sf2e/icons/default-icons/action.svg",
-      "folder": null,
-      "sort": 100000,
+      "img": "systems/sf2e/icons/actions/Passive.webp",
+      "sort": 200000,
       "ownership": {
         "default": 0,
-        "AU1j8tJgRKJzaB89": 3
+        "KQrTwr8CCXT32xPE": 3
       },
       "flags": {},
       "_stats": {
         "coreVersion": "14.364",
         "systemId": "sf2e",
         "systemVersion": "1.2.0",
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.sf2e-mechanic.options.Item.T8uQ2B0zEsMLKx0Q",
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!NnHJk3FnfhVRLVHp.aQjDCjRVPBQ4PKOq"
+      "_id": "7gx5eFwI7tdtMwl3",
+      "_key": "!actors.items!NnHJk3FnfhVRLVHp.7gx5eFwI7tdtMwl3"
     },
     {
+      "name": "Turret Defenses",
       "type": "action",
-      "name": "Reposition Exocortex",
+      "effects": [],
       "system": {
+        "_migration": {
+          "version": 0.959,
+          "previous": null
+        },
+        "description": {
+          "value": "<p><span style=\"font-family:'Roboto, sans-serif'\">Your turret's level is equal to your level, its AC is equal to your mechanic class DC, and it has Hardness equal to half your level (rounded up).</span></p><p><span style=\"font-family:'Roboto, sans-serif'\">It has trained proficiency in Reflex and Fortitude saves, using your Intelligence modifier to calculate these bonuses.</span></p><p><span style=\"font-family:'Roboto, sans-serif'\">It has 6 Hit Points, plus a number of Hit Points equal to 2 plus your Intelligence modifier for each level you have. Its Broken Threshold is equal to half its total Hit Points (rounded down).</span></p><p><span style=\"font-family:'Roboto, sans-serif'\">During your daily preparations, you automatically repair your turret, restoring it to maximum Hit Points. If your turret is destroyed, the next time you Deploy Turret, you deploy a repaired turret with maximum Hit Points.</span></p><p><span style=\"font-family:'Roboto, sans-serif'\">At 5th level, your turret's Hardness increases to 10. At 10th level, it increases to 15 and its proficiency rank in Reflex and Fortitude saves increases to expert. At 15th level, its Hardness increases to 20, and its proficiency rank in Reflex and Fortitude saves increases to master.</span></p>",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [
+          {
+            "key": "FlatModifier",
+            "selector": "hp",
+            "value": "(6 + @actor.abilities.int.mod + 2) * @actor.level",
+            "type": "proficiency",
+            "label": "Turret HP"
+          },
+          {
+            "key": "FlatModifier",
+            "selector": [
+              "ac"
+            ],
+            "value": "@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level",
+            "type": "proficiency",
+            "label": "Turret AC"
+          },
+          {
+            "key": "ActiveEffectLike",
+            "mode": "add",
+            "path": "system.attributes.hardness.value",
+            "phase": "afterDerived",
+            "value": "ternary(gte(@actor.level, 15), 20, ternary(gte(@actor.level, 10), 15, ternary(gte(@actor.level, 5), 10, ceil(@actor.level / 2))))"
+          },
+          {
+            "key": "FlatModifier",
+            "selector": [
+              "reflex",
+              "fortitude"
+            ],
+            "value": "@actor.abilities.int.mod + @actor.level",
+            "label": "Turret Saves"
+          },
+          {
+            "key": "FlatModifier",
+            "selector": [
+              "reflex",
+              "fortitude"
+            ],
+            "value": "ternary(gte(@actor.level, 15), 6, ternary(gte(@actor.level, 10), 4, 2))",
+            "label": "Turret Saves Proficiency",
+            "type": "proficiency"
+          }
+        ],
+        "slug": null,
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
         "actionType": {
           "value": "passive"
+        },
+        "actions": {
+          "value": null
+        },
+        "category": null,
+        "deathNote": false
+      },
+      "img": "systems/sf2e/icons/actions/Passive.webp",
+      "folder": "wur9SwXZtBosQYEC",
+      "sort": 300000,
+      "ownership": {
+        "default": 0,
+        "KQrTwr8CCXT32xPE": 3
+      },
+      "flags": {},
+      "_stats": {
+        "coreVersion": "14.364",
+        "systemId": "sf2e",
+        "systemVersion": "1.2.0",
+        "compendiumSource": "Compendium.sf2e-mechanic.options.Item.QGL8bGTIA8zy2CJk",
+        "duplicateSource": null,
+        "exportSource": null
+      },
+      "_id": "6ytQh9mtQ6CNBKRT",
+      "_key": "!actors.items!NnHJk3FnfhVRLVHp.6ytQh9mtQ6CNBKRT"
+    },
+    {
+      "folder": "wur9SwXZtBosQYEC",
+      "name": "Reposition Exocortex",
+      "type": "action",
+      "effects": [],
+      "system": {
+        "_migration": {
+          "version": 0.959,
+          "previous": null
         },
         "description": {
           "value": "",
@@ -847,367 +1191,22 @@
             ]
           }
         ],
-        "slug": null,
+        "slug": "reposition-exocortex",
         "traits": {
           "otherTags": [],
           "value": []
         },
-        "_migration": {
-          "version": 0.959,
-          "previous": {
-            "schema": null,
-            "foundry": "14.364",
-            "system": "1.2.0"
-          }
-        },
-        "actions": {
-          "value": null
-        },
-        "category": null,
-        "deathNote": false
-      },
-      "effects": [],
-      "_id": "PPdHoqYb1Vw6O3sI",
-      "img": "systems/sf2e/icons/default-icons/action.svg",
-      "folder": null,
-      "sort": 300000,
-      "ownership": {
-        "default": 0,
-        "AU1j8tJgRKJzaB89": 3
-      },
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.364",
-        "systemId": "sf2e",
-        "systemVersion": "1.2.0",
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!NnHJk3FnfhVRLVHp.PPdHoqYb1Vw6O3sI"
-    },
-    {
-      "type": "melee",
-      "name": "Area Denial Turret (Cone)",
-      "effects": [],
-      "system": {
-        "_migration": {
-          "version": 0.959,
-          "previous": null
-        },
-        "description": {
-          "value": "<p>Area Range must be set manually based on the Weapon Array</p><p>Save DC must be set manually based on the Class DC and the Weapon Grade</p>",
-          "gm": ""
-        },
-        "publication": {
-          "title": "",
-          "authors": "",
-          "license": "OGL",
-          "remaster": false
-        },
-        "rules": [],
-        "slug": "area-denial-turret-cone",
-        "traits": {
-          "otherTags": [],
-          "value": [],
-          "config": {}
-        },
-        "action": "area-fire",
-        "area": {
-          "value": 45,
-          "type": "cone"
-        },
-        "damageRolls": {
-          "Oc4H3DfV4cqVLaSk": {
-            "damage": "1d8",
-            "damageType": "piercing",
-            "category": null
-          }
-        },
-        "bonus": {
-          "value": 0
-        },
-        "attackEffects": {
-          "value": []
-        },
-        "range": null,
-        "subjectToMAP": true
-      },
-      "_id": "jCrTD99J0y22yg8O",
-      "img": "systems/sf2e/icons/default-icons/melee.svg",
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "KQrTwr8CCXT32xPE": 3
-      },
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.364",
-        "systemId": "sf2e",
-        "systemVersion": "1.2.0",
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!NnHJk3FnfhVRLVHp.jCrTD99J0y22yg8O"
-    },
-    {
-      "type": "melee",
-      "name": "Area Denial Turret (Line)",
-      "effects": [],
-      "system": {
-        "_migration": {
-          "version": 0.959,
-          "previous": null
-        },
-        "description": {
-          "value": "<p>Area Range must be set manually based on the Weapon Array</p><p>Save DC must be set manually based on the Class DC and the Weapon Grade</p>",
-          "gm": ""
-        },
-        "publication": {
-          "title": "",
-          "authors": "",
-          "license": "OGL",
-          "remaster": false
-        },
-        "rules": [],
-        "slug": "area-denial-turret-line",
-        "traits": {
-          "otherTags": [],
-          "value": [],
-          "config": {}
-        },
-        "action": "area-fire",
-        "area": {
-          "value": 45,
-          "type": "line"
-        },
-        "damageRolls": {
-          "fUUdpm5WPih4LlaR": {
-            "damage": "1d8",
-            "damageType": "piercing",
-            "category": null
-          }
-        },
-        "bonus": {
-          "value": 0
-        },
-        "attackEffects": {
-          "value": []
-        },
-        "range": null,
-        "subjectToMAP": true
-      },
-      "_id": "fXli9L1iVZilXdVC",
-      "img": "systems/sf2e/icons/default-icons/melee.svg",
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "KQrTwr8CCXT32xPE": 3
-      },
-      "flags": {},
-      "_stats": {
-        "coreVersion": "14.364",
-        "systemId": "sf2e",
-        "systemVersion": "1.2.0",
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "exportSource": null
-      },
-      "_key": "!actors.items!NnHJk3FnfhVRLVHp.fXli9L1iVZilXdVC"
-    },
-    {
-      "type": "action",
-      "name": "Weapon Grade",
-      "system": {
         "actionType": {
           "value": "passive"
         },
-        "description": {
-          "value": "",
-          "gm": ""
-        },
-        "publication": {
-          "title": "",
-          "authors": "",
-          "license": "OGL",
-          "remaster": false
-        },
-        "rules": [
-          {
-            "key": "RollOption",
-            "label": "Weapon Grade",
-            "option": "weapon-grade",
-            "toggleable": true,
-            "alwaysActive": true,
-            "suboptions": [
-              {
-                "label": "Commercial",
-                "value": "commercial"
-              },
-              {
-                "label": "Tactical",
-                "value": "tactical"
-              },
-              {
-                "label": "Advanced",
-                "value": "Advanced"
-              },
-              {
-                "label": "Superior",
-                "value": "superior"
-              },
-              {
-                "label": "Elite",
-                "value": "elite"
-              },
-              {
-                "label": "Ultimate",
-                "value": "ultimate"
-              },
-              {
-                "label": "Paragon",
-                "value": "paragon"
-              }
-            ],
-            "value": true,
-            "selection": "commercial"
-          },
-          {
-            "key": "ActiveEffectLike",
-            "path": "flags.system.turret.damage",
-            "mode": "override",
-            "value": {
-              "diceNumber": 1,
-              "strikeBonus": 0
-            },
-            "predicate": [
-              "weapon-grade:commercial"
-            ]
-          },
-          {
-            "key": "ActiveEffectLike",
-            "path": "flags.system.turret.damage",
-            "mode": "override",
-            "value": {
-              "diceNumber": 1,
-              "strikeBonus": 1
-            },
-            "predicate": [
-              "weapon-grade:tactical"
-            ]
-          },
-          {
-            "key": "ActiveEffectLike",
-            "path": "flags.system.turret.damage",
-            "mode": "override",
-            "value": {
-              "diceNumber": 2,
-              "strikeBonus": 1
-            },
-            "predicate": [
-              "weapon-grade:advanced"
-            ]
-          },
-          {
-            "key": "ActiveEffectLike",
-            "path": "flags.system.turret.damage",
-            "mode": "override",
-            "value": {
-              "diceNumber": 2,
-              "strikeBonus": 2
-            },
-            "predicate": [
-              "weapon-grade:superior"
-            ]
-          },
-          {
-            "key": "ActiveEffectLike",
-            "path": "flags.system.turret.damage",
-            "mode": "override",
-            "value": {
-              "diceNumber": 3,
-              "strikeBonus": 2
-            },
-            "predicate": [
-              "weapon-grade:elite"
-            ]
-          },
-          {
-            "key": "ActiveEffectLike",
-            "path": "flags.system.turret.damage",
-            "mode": "override",
-            "value": {
-              "diceNumber": 3,
-              "strikeBonus": 3
-            },
-            "predicate": [
-              "weapon-grade:ultimate"
-            ]
-          },
-          {
-            "key": "ActiveEffectLike",
-            "path": "flags.system.turret.damage",
-            "mode": "override",
-            "value": {
-              "diceNumber": 4,
-              "strikeBonus": 3
-            },
-            "predicate": [
-              "weapon-grade:paragon"
-            ],
-            "phase": "beforeDerived"
-          },
-          {
-            "key": "FlatModifier",
-            "label": "Weapon Grade",
-            "value": "@actor.flags.system.turret.damage.strikeBonus",
-            "selector": [
-              "turret-weapon-attack-roll"
-            ],
-            "type": "item"
-          },
-          {
-            "key": "DamageAlteration",
-            "selectors": [
-              "turret-weapon-damage",
-              "area-denial-turret-cone-damage",
-              "area-denial-turret-line-damage"
-            ],
-            "property": "dice-number",
-            "mode": "override",
-            "value": "@actor.flags.system.turret.damage.diceNumber",
-            "predicate": [
-              "dice:slug:base"
-            ]
-          }
-        ],
-        "slug": null,
-        "traits": {
-          "otherTags": [],
-          "value": []
-        },
-        "_migration": {
-          "version": 0.959,
-          "previous": {
-            "schema": null,
-            "foundry": "14.364",
-            "system": "1.2.0"
-          }
-        },
         "actions": {
           "value": null
         },
         "category": null,
         "deathNote": false
       },
-      "effects": [],
-      "_id": "UOpGqbboJvHkUn7h",
-      "img": "systems/sf2e/icons/default-icons/action.svg",
-      "folder": null,
-      "sort": 0,
+      "img": "systems/sf2e/icons/actions/Passive.webp",
+      "sort": 400000,
       "ownership": {
         "default": 0,
         "KQrTwr8CCXT32xPE": 3
@@ -1217,11 +1216,12 @@
         "coreVersion": "14.364",
         "systemId": "sf2e",
         "systemVersion": "1.2.0",
-        "compendiumSource": null,
+        "compendiumSource": "Compendium.sf2e-mechanic.options.Item.mcghNVOrw80hvKz0",
         "duplicateSource": null,
         "exportSource": null
       },
-      "_key": "!actors.items!NnHJk3FnfhVRLVHp.UOpGqbboJvHkUn7h"
+      "_id": "5spzMMFP4LvFqqfF",
+      "_key": "!actors.items!NnHJk3FnfhVRLVHp.5spzMMFP4LvFqqfF"
     }
   ],
   "folder": null,

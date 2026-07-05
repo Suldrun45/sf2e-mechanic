@@ -1,0 +1,106 @@
+{
+  "folder": "wur9SwXZtBosQYEC",
+  "name": "Reposition Exocortex",
+  "type": "action",
+  "effects": [],
+  "system": {
+    "_migration": {
+      "version": 0.959,
+      "previous": null
+    },
+    "description": {
+      "value": "",
+      "gm": ""
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "rules": [
+      {
+        "key": "BaseSpeed",
+        "selector": "land",
+        "value": 25,
+        "predicate": [
+          {
+            "gte": [
+              "self:level",
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "key": "BaseSpeed",
+        "selector": "land",
+        "value": 30,
+        "predicate": [
+          {
+            "gte": [
+              "self:level",
+              8
+            ]
+          }
+        ]
+      },
+      {
+        "key": "BaseSpeed",
+        "selector": "land",
+        "value": 35,
+        "predicate": [
+          {
+            "gte": [
+              "self:level",
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "key": "BaseSpeed",
+        "selector": "land",
+        "value": 40,
+        "predicate": [
+          {
+            "gte": [
+              "self:level",
+              18
+            ]
+          }
+        ]
+      }
+    ],
+    "slug": "reposition-exocortex",
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "actionType": {
+      "value": "passive"
+    },
+    "actions": {
+      "value": null
+    },
+    "category": null,
+    "deathNote": false
+  },
+  "_id": "mcghNVOrw80hvKz0",
+  "img": "systems/sf2e/icons/actions/Passive.webp",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "KQrTwr8CCXT32xPE": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!mcghNVOrw80hvKz0"
+}

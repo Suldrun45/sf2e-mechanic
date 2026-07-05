@@ -1,0 +1,96 @@
+{
+  "name": "Turret Defenses",
+  "type": "action",
+  "effects": [],
+  "system": {
+    "_migration": {
+      "version": 0.959,
+      "previous": null
+    },
+    "description": {
+      "value": "<p><span style=\"font-family:'Roboto, sans-serif'\">Your turret's level is equal to your level, its AC is equal to your mechanic class DC, and it has Hardness equal to half your level (rounded up).</span></p><p><span style=\"font-family:'Roboto, sans-serif'\">It has trained proficiency in Reflex and Fortitude saves, using your Intelligence modifier to calculate these bonuses.</span></p><p><span style=\"font-family:'Roboto, sans-serif'\">It has 6 Hit Points, plus a number of Hit Points equal to 2 plus your Intelligence modifier for each level you have. Its Broken Threshold is equal to half its total Hit Points (rounded down).</span></p><p><span style=\"font-family:'Roboto, sans-serif'\">During your daily preparations, you automatically repair your turret, restoring it to maximum Hit Points. If your turret is destroyed, the next time you Deploy Turret, you deploy a repaired turret with maximum Hit Points.</span></p><p><span style=\"font-family:'Roboto, sans-serif'\">At 5th level, your turret's Hardness increases to 10. At 10th level, it increases to 15 and its proficiency rank in Reflex and Fortitude saves increases to expert. At 15th level, its Hardness increases to 20, and its proficiency rank in Reflex and Fortitude saves increases to master.</span></p>",
+      "gm": ""
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "rules": [
+      {
+        "key": "FlatModifier",
+        "selector": "hp",
+        "value": "(6 + @actor.abilities.int.mod + 2) * @actor.level",
+        "type": "proficiency",
+        "label": "Turret HP"
+      },
+      {
+        "key": "FlatModifier",
+        "selector": [
+          "ac"
+        ],
+        "value": "@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level",
+        "type": "proficiency",
+        "label": "Turret AC"
+      },
+      {
+        "key": "ActiveEffectLike",
+        "mode": "add",
+        "path": "system.attributes.hardness.value",
+        "phase": "afterDerived",
+        "value": "ternary(gte(@actor.level, 15), 20, ternary(gte(@actor.level, 10), 15, ternary(gte(@actor.level, 5), 10, ceil(@actor.level / 2))))"
+      },
+      {
+        "key": "FlatModifier",
+        "selector": [
+          "reflex",
+          "fortitude"
+        ],
+        "value": "@actor.abilities.int.mod + @actor.level",
+        "label": "Turret Saves"
+      },
+      {
+        "key": "FlatModifier",
+        "selector": [
+          "reflex",
+          "fortitude"
+        ],
+        "value": "ternary(gte(@actor.level, 15), 6, ternary(gte(@actor.level, 10), 4, 2))",
+        "label": "Turret Saves Proficiency",
+        "type": "proficiency"
+      }
+    ],
+    "slug": null,
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "actionType": {
+      "value": "passive"
+    },
+    "actions": {
+      "value": null
+    },
+    "category": null,
+    "deathNote": false
+  },
+  "_id": "QGL8bGTIA8zy2CJk",
+  "img": "systems/sf2e/icons/actions/Passive.webp",
+  "folder": "wur9SwXZtBosQYEC",
+  "sort": 200000,
+  "ownership": {
+    "default": 0,
+    "KQrTwr8CCXT32xPE": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!QGL8bGTIA8zy2CJk"
+}

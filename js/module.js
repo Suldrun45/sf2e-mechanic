@@ -1,23 +1,7 @@
-const SOURCES = {
-    MECHANIC:{
-        DEPLOY_TURRET: "Compendium.starfinder-field-test-for-pf2e.sf2e-actions.Item.1vWiNk1jbqCq4O16"     
-    }
-};
-const TURRET_ACTOR_UUID = "Compendium.sf2e-mechanic.actors.Actor.NnHJk3FnfhVRLVHp";
-const MINE_ACTOR_UUID = "Compendium.pf2e-summons-assistant.sf2e-summons-assistant-actors.Actor.sAVuxP25VE126TdZ";
-const MULTIDISCIPLINARY_MECHANIC_ACTION_UUID = "Compendium.sf2e-mechanic.options.Item.894xo66p6om8suvT";
-
-const SOURCE_UUIDS = getAllSourceUUIDs();
-
-function getAllSourceUUIDs() {
-    const uuids = new Set();
-    for (const category of Object.values(SOURCES)) {
-      for (const uuid of Object.values(category)) {
-        uuids.add(uuid);
-      }
-    }
-    return uuids;
-  }
+import {summon, getSpecificSummonDetails} from "./summon.js";
+import {SOURCE_UUIDS, TURRET_ACTOR_UUID, MINE_ACTOR_UUID, MULTIDISCIPLINARY_MECHANIC_ACTION_UUID, LONG_RANGE_PROPULSORS_TURRET_UUID, BIG_BOOM_TURRET_UUID} from "./consts.js";
+import {messageItemHasRollOption} from "./helpers.js";
+import {setTurretAttacks} from "./turret.js";
 
 Hooks.once("ready", async function () {
     Hooks.on("createChatMessage", async (chatMessage, _info, userID) => {
@@ -83,8 +67,6 @@ Hooks.once("ready", async function () {
             config,
           );
     });
-
-    //Hooks.on("preCreateToken", async (tokenDocument, token, _info, userID) => {});
     
     Hooks.on("updateActor", async (actor, data, _info, userID) => {     
       if (actor.sourceId == MINE_ACTOR_UUID && data?.flags?.["pf2e-summons-assistant"]?.summoner){                
@@ -101,203 +83,75 @@ Hooks.once("ready", async function () {
           }
         }
       }
+      if (actor.sourceId == TURRET_ACTOR_UUID){
+        if (data.system?.abilities?.int?.mod){
+          const level = actor.level;
+          const intelligence = data.system.abilities.int.mod;
+          const arrayType = actor.itemTypes.action.find(p => p.slug == "weapon-arrays")?.system?.rules?.find(p=> p.key == "RollOption" && p.option=="arrays")?.selection;
+          const weaponGrade = actor.itemTypes.action.find(p => p.slug == "weapon-grade")?.system?.rules?.find(p=> p.key == "RollOption" && p.option=="weapon-grade")?.selection;     
+          await setTurretAttacks(actor, arrayType, intelligence, level, weaponGrade);      
+        }
+        if (data.system?.details?.level?.value){
+          const level = data.system.details.level.value;
+          const intelligence = actor.system.abilities.int.mod;
+          const arrayType = actor.itemTypes.action.find(p => p.slug == "weapon-arrays")?.system?.rules?.find(p=> p.key == "RollOption" && p.option=="arrays")?.selection;
+          const weaponGrade = actor.itemTypes.action.find(p => p.slug == "weapon-grade")?.system?.rules?.find(p=> p.key == "RollOption" && p.option=="weapon-grade")?.selection;     
+          await setTurretAttacks(actor, arrayType, intelligence, level, weaponGrade);      
+        }
+      }
+    });
 
+    Hooks.on("createItem", async (item, _info, userId) => {
+      const actor = item.actor;
+      if ((item.sourceId == LONG_RANGE_PROPULSORS_TURRET_UUID || item.sourceId == BIG_BOOM_TURRET_UUID) && actor.sourceId == TURRET_ACTOR_UUID){
+        const level = actor.level;
+        const intelligence = actor.system.abilities.int.mod;
+        const arrayType = actor.itemTypes.action.find(p => p.slug == "weapon-arrays")?.system?.rules?.find(p=> p.key == "RollOption" && p.option=="arrays")?.selection;
+        const weaponGrade = actor.itemTypes.action.find(p => p.slug == "weapon-grade")?.system?.rules?.find(p=> p.key == "RollOption" && p.option=="weapon-grade")?.selection;     
+        await setTurretAttacks(actor, arrayType, intelligence, level, weaponGrade);
+      }
+    });
+
+    Hooks.on("deleteItem", async (item, _info, userId) => {
+      const actor = item.actor;
+      if ((item.sourceId == LONG_RANGE_PROPULSORS_TURRET_UUID || item.sourceId == BIG_BOOM_TURRET_UUID) && actor.sourceId == TURRET_ACTOR_UUID){
+        const level = actor.level;
+        const intelligence = actor.system.abilities.int.mod;
+        const arrayType = actor.itemTypes.action.find(p => p.slug == "weapon-arrays")?.system?.rules?.find(p=> p.key == "RollOption" && p.option=="arrays")?.selection;
+        const weaponGrade = actor.itemTypes.action.find(p => p.slug == "weapon-grade")?.system?.rules?.find(p=> p.key == "RollOption" && p.option=="weapon-grade")?.selection;     
+        await setTurretAttacks(actor, arrayType, intelligence, level, weaponGrade);
+      }
+    });
+    
+    Hooks.on("updateItem", async (item, updateData, _info, userId) => {
+      if (item.slug == "weapon-arrays" && updateData.system?.rules){
+        const arrayType = updateData.system.rules.find(p=> p.key == "RollOption" && p.option=="arrays")?.selection;
+        if (arrayType){
+          const turret = item.parent;
+          const level = turret.level;
+          const intelligence = turret.system.abilities.int.mod;
+          const weaponGrade = turret.itemTypes.action.find(p => p.slug == "weapon-grade")?.system?.rules?.find(p=> p.key == "RollOption" && p.option=="weapon-grade")?.selection;
+          await setTurretAttacks(turret, arrayType, intelligence, level, weaponGrade);
+        }
+      }
+      
+      if (item.slug == "weapon-grade" && updateData.system?.rules){
+        const weaponGrade = updateData.system.rules.find(p=> p.key == "RollOption" && p.option=="weapon-grade")?.selection;
+        if (weaponGrade){
+          const turret = item.parent;
+          const level = turret.level;
+          const intelligence = turret.system.abilities.int.mod;
+          const arrayType = turret.itemTypes.action.find(p => p.slug == "weapon-arrays")?.system?.rules?.find(p=> p.key == "RollOption" && p.option=="arrays")?.selection;
+          await setTurretAttacks(turret, arrayType, intelligence, level, weaponGrade);
+        }
+      }
+    });
+
+    await game.actors.map(p=>p).filter(p => p.type == "npc" && p.sourceId == TURRET_ACTOR_UUID).forEach(async (turret) => {       
+      const level = turret.level;
+      const intelligence = turret.system.abilities.int.mod;
+      const arrayType = turret.itemTypes.action.find(p => p.slug == "weapon-arrays")?.system?.rules?.find(p=> p.key == "RollOption" && p.option=="arrays")?.selection;
+      const weaponGrade = turret.itemTypes.action.find(p => p.slug == "weapon-grade")?.system?.rules?.find(p=> p.key == "RollOption" && p.option=="weapon-grade")?.selection;     
+      await setTurretAttacks(turret, arrayType, intelligence, level, weaponGrade);      
     });
 });
-
-function messageItemHasRollOption(msg, roll_option) {
-    return msg?.flags?.sf2e?.origin?.rollOptions?.includes(roll_option);
-}
-  
-async function getSpecificSummonDetails(
-    uuid,
-    data = {
-      rank: 0,
-      summonerLevel: 0,
-      dc: 0,
-      summonerRollOptions: [],
-      itemRollOptions: [],
-      targetTokenUUID: null,
-      tokenWidth: 1,
-      tokenHeight: 1,
-      ignoreDialogue: false,
-    },
-  ) {  
-    const SUMMON_HANDLERS = getSummonHandlers();
-    const handler = SUMMON_HANDLERS[uuid];
-    if (handler) {
-      return await handler(data);
-    }
-  
-    return null;
-  }
-
-  const getSummonHandlers = () => ({
-    [SOURCES.MECHANIC.DEPLOY_TURRET]: handlers.mechanic.handleDeployTurret,
-  });
-
-  const handlers = {  
-    mechanic: {
-        handleDeployTurret: async (data) => {
-            const uuid = await getTurret(data.summonerActorId);
-            return [{
-                specific_uuids: [uuid],
-                isCharacter: true,
-                rank: data.rank,
-                modifications: {
-                    "system.details.level.value": data.summonerLevel,
-                    "system.resources.dc.value": data.classDC,
-                    "system.abilities.int.mod": data.int,
-                    "system.abilities.dex.mod": data.dex,
-                },
-                itemsToAdd: [],
-                },
-            ];
-        }
-    }
-};
-
-async function getTurret(summonerActorId) {
-    const summonerActor = game.actors.get(summonerActorId);
-
-    const defaultTurretUUID = summonerActor.getFlag("sf2e-mechanic", 'turretUUID');
-      
-    let turrets = game.toolbelt?.api.shareData.getSlavesInMemory(summonerActor, false).filter(act => (act?._stats?.compendiumSource === TURRET_ACTOR_UUID)).map(act => ({ name: act.name, uuid: act.uuid, selected: defaultTurretUUID && act.uuid === defaultTurretUUID }));
-
-    if (turrets.length > 0){
-      const turretUUID = turrets[0].uuid;
-      await summonerActor.setFlag("sf2e-mechanic", 'turretUUID', turretUUID);
-      return turretUUID;
-    }
-    else
-    {
-      turrets = game.actors
-        .filter(act =>
-            act.type === 'npc' &&
-            (act?._stats?.compendiumSource === TURRET_ACTOR_UUID) &&
-            getNonGMOwnerStringified(act) === getNonGMOwnerStringified(summonerActor)
-        )
-        .map(act => ({ name: act.name, uuid: act.uuid, selected: defaultTurretUUID && act.uuid === defaultTurretUUID }));
-
-      if (turrets.length === 1) {
-          const turretUUID = turrets[0].uuid;
-          await summonerActor.setFlag("sf2e-mechanic", 'turretUUID', turretUUID);
-          return turretUUID;
-      } else if (turrets.length > 1) {
-          warnNotification("Too many turrets found.");
-      }
-    }
-    return null;
-}
-
-function getNonGMOwnerStringified(actor) {
-    return JSON.stringify(
-        Object.entries(actor?.ownership ?? {})
-            .filter(owner =>
-                owner[1] === CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER &&
-                owner[0] !== game.users?.activeGM?.id
-            )
-            .map(owner => owner?.[0])
-            .toSorted()
-    )
-}
-
-async function summon(
-    summonerActor,
-    itemUuid,
-    summonType,
-    summonDetailsGroup,
-    config = {},
-  ) {
-    const summonerToken = summonerActor.getActiveTokens()[0];
-    const summonerAlliance = summonerActor.system.details.alliance;
-    // No Summon Spell Found
-    if (summonDetailsGroup === null) return;
-  
-    const summonerItem = config?.item ?? (await foundry.utils.fromUuid(itemUuid));
-  
-    const summonActorUUIDList = [];
-  
-    for (const summonDetails of summonDetailsGroup) {
-      const requiredTraits = summonDetails?.traits || [];
-      const allowedSpecificUuids = summonDetails?.specific_uuids || [];
-      const actorModifications = summonDetails?.modifications || {};
-      const itemsToAdd = summonDetails?.itemsToAdd || [];
-      const isCharacter = summonDetails?.isCharacter;
-      const crosshairParameters = summonDetails?.crosshairParameters || {};
-      const amount = summonDetails?.amount || 1;
-
-      let selectedActorUuid;
-      if (allowedSpecificUuids.length === 1) {
-        selectedActorUuid = allowedSpecificUuids[0];
-      } 
-      else {
-        return;
-      }  
-      
-      const selectedActor = await foundry.utils.fromUuid(selectedActorUuid);
-      const originalActorLevel = selectedActor?.level; 
-  
-      delete actorModifications?.["system.traits.value"];
-  
-      const levelData = summonerToken?.document?.level
-        ? { "protoTypeToken.level": summonerToken?.document?.level }
-        : {};
-  
-      const actorUpdateData = {
-        "system.details.alliance": summonerAlliance,
-        ...levelData,
-        ...actorModifications,
-      };
-  
-      let prevSummonedToken;
-      for (let i = 0; i < amount; i++) {
-        const tokDoc = await foundrySummons.pick({
-          uuid: selectedActorUuid,
-          updateData: actorUpdateData,
-          crosshairParameters:
-            typeof crosshairParameters === "function"
-              ? crosshairParameters({ cnt: i, prevSummonedToken })
-              : crosshairParameters,
-        });
-  
-        const summonedActor = tokDoc.actor ?? game.actors.get(tokDoc.actorId);
-  
-        if (itemsToAdd.length > 0) {
-          await summonedActor?.createEmbeddedDocuments("Item", itemsToAdd);
-        }
-        
-        await handlePostSummon(
-          itemUuid,
-          summonedActor.uuid,
-          summonedActor.id,
-          summonerToken,
-          actorUpdateData
-        );
-        prevSummonedToken = tokDoc?.object || canvas.tokens?.get(tokDoc?._id);
-      }
-    }
-  }
-
-  async function handlePostSummon(
-    itemUUID,
-    summonedActorUUID,
-    summonedActorID,
-    summonerToken,
-    actorUpdateData
-  ) {
-    switch (itemUUID) {
-        case SOURCES.MECHANIC.DEPLOY_TURRET:
-          postSummonHelper.DEPLOY_TURRET(summonedActorID, actorUpdateData);
-          break;
-        default:
-          break;
-        }
-  }
-
-  const postSummonHelper = {
-    DEPLOY_TURRET: async(summonedActorID, actorUpdateData) => {
-        const actor = game.actors.get(summonedActorID);
-        await actor.update(actorUpdateData);
-    },
-  };

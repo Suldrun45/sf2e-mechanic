@@ -1,0 +1,388 @@
+{
+  "folder": "wur9SwXZtBosQYEC",
+  "name": "Weapon Arrays",
+  "type": "action",
+  "effects": [],
+  "system": {
+    "_migration": {
+      "version": 0.959,
+      "previous": null
+    },
+    "description": {
+      "value": "<p>Select one of the following arrays for your turret, which determines its damage type and range increment. You can spend 10 minutes modifying your turret using your custom rig to change its selected array.</p><ul><li><p><strong>Chaingun:</strong> 1d8 piercing damage, range increment 90 feet, analog trait, projectile weapon group</p></li><li><p><strong>Disintegrator:</strong> 1d8 acid damage, range increment 60 feet, tech trait, corrosive weapon group</p></li><li><p><strong>Laser Beam:</strong> 1d8 fire damage, range increment 60 feet, tech trait, laser weapon group</p></li><li><p><strong>Thunderclap:</strong> 1d8 sonic damage, range increment 60 feet, tech trait, sonic weapon group</p></li><li><p><strong>Volt Thrower:</strong> 1d8 electricity damage, range increment 60 feet, tech trait, shock weapon group</p></li><li><p><strong>Zero Emitter:</strong> 1d8 cold damage, range increment 60 feet, tech trait, cryo weapon group</p></li></ul>",
+      "gm": ""
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "rules": [
+      {
+        "key": "RollOption",
+        "label": "Weapon Array",
+        "toggleable": true,
+        "option": "arrays",
+        "alwaysActive": true,
+        "mergeable": true,
+        "suboptions": [
+          {
+            "label": "Chaingun",
+            "value": "chaingun"
+          },
+          {
+            "label": "Disintegrator",
+            "value": "disintegrator"
+          },
+          {
+            "label": "Laser Beam",
+            "value": "laser-beam"
+          },
+          {
+            "label": "Thunderclap",
+            "value": "thunderclap"
+          },
+          {
+            "label": "Volt Thrower",
+            "value": "volt-thrower"
+          },
+          {
+            "label": "Zero Emitter",
+            "value": "zero-emitter"
+          }
+        ],
+        "value": true,
+        "selection": "chaingun"
+      },
+      {
+        "key": "ActiveEffectLike",
+        "path": "flags.system.turret.array",
+        "mode": "override",
+        "value": {
+          "damageType": "piercing",
+          "range": 90,
+          "trait": "analog",
+          "group": "projectile"
+        },
+        "predicate": [
+          "arrays:chaingun"
+        ]
+      },
+      {
+        "key": "ActiveEffectLike",
+        "path": "flags.system.turret.array",
+        "mode": "override",
+        "value": {
+          "damageType": "acid",
+          "range": 60,
+          "trait": "tech",
+          "group": "corrosive"
+        },
+        "predicate": [
+          "arrays:disintegrator"
+        ]
+      },
+      {
+        "key": "ActiveEffectLike",
+        "path": "flags.system.turret.array",
+        "mode": "override",
+        "value": {
+          "damageType": "fire",
+          "range": 60,
+          "trait": "tech",
+          "group": "laser"
+        },
+        "predicate": [
+          "arrays:laser-beam"
+        ]
+      },
+      {
+        "key": "ActiveEffectLike",
+        "path": "flags.system.turret.array",
+        "mode": "override",
+        "value": {
+          "damageType": "sonic",
+          "range": 60,
+          "trait": "tech",
+          "group": "sonic"
+        },
+        "predicate": [
+          "arrays:thunderclap"
+        ]
+      },
+      {
+        "key": "ActiveEffectLike",
+        "path": "flags.system.turret.array",
+        "mode": "override",
+        "value": {
+          "damageType": "electricity",
+          "range": 60,
+          "trait": "tech",
+          "group": "shock"
+        },
+        "predicate": [
+          "arrays:volt-thrower"
+        ]
+      },
+      {
+        "key": "ActiveEffectLike",
+        "path": "flags.system.turret.array",
+        "mode": "override",
+        "value": {
+          "damageType": "cold",
+          "range": 60,
+          "trait": "tech",
+          "group": "cryo"
+        },
+        "predicate": [
+          "arrays:zero-emitter"
+        ]
+      },
+      {
+        "key": "DamageAlteration",
+        "mode": "override",
+        "property": "damage-type",
+        "selectors": [
+          "turret-weapon-damage",
+          "area-denial-turret-cone-damage",
+          "area-denial-turret-line-damage"
+        ],
+        "value": "{actor|flags.system.turret.array.damageType}",
+        "predicate": [
+          "dice:slug:base"
+        ]
+      },
+      {
+        "key": "AdjustStrike",
+        "mode": "add",
+        "property": "weapon-traits",
+        "value": "{actor|flags.system.turret.array.trait}",
+        "definition": [
+          "item:slug:turret-weapon",
+          "item:slug:area-denial-turret-cone",
+          "item:slug:area-denial-turret-line"
+        ]
+      },
+      {
+        "key": "AdjustStrike",
+        "mode": "add",
+        "property": "weapon-group",
+        "value": "{actor|flags.system.turret.array.group}",
+        "definition": [
+          "item:slug:turret-weapon",
+          "item:slug:area-denial-turret-cone",
+          "item:slug:area-denial-turret-line"
+        ]
+      },
+      {
+        "key": "FlatModifier",
+        "value": "ternary(gte(@actor.level, 13), 6, ternary(gte(@actor.level, 5), 4, 2))+ @actor.level",
+        "selector": [
+          "turret-weapon-attack-roll"
+        ],
+        "label": "Proficiency",
+        "type": "proficiency"
+      },
+      {
+        "key": "FlatModifier",
+        "label": "Dexterity",
+        "value": "@actor.abilities.dex.mod",
+        "selector": [
+          "turret-weapon-attack-roll"
+        ],
+        "type": "ability",
+        "ability": "dex"
+      },
+      {
+        "key": "Note",
+        "selector": [
+          "turret-weapon-damage"
+        ],
+        "title": "Critical Specialization",
+        "outcome": [
+          "criticalSuccess"
+        ],
+        "text": "The target must succeed at a @Check[fortitude|dc:resolve(@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level + 10)] or be @UUID[Compendium.sf2e.conditions.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the start of your next turn",
+        "predicate": [
+          "arrays:chaingun",
+          {
+            "gte": [
+              "self:level",
+              5
+            ]
+          }
+        ]
+      },
+      {
+        "key": "DamageDice",
+        "critical": true,
+        "selector": "turret-weapon-damage",
+        "diceNumber": 1,
+        "dieSize": "d6",
+        "damageType": "acid",
+        "category": "persistent",
+        "predicate": [
+          "arrays:disintegrator",
+          {
+            "gte": [
+              "self:level",
+              5
+            ]
+          }
+        ],
+        "hideIfDisabled": true,
+        "label": "Critical Specialization"
+      },
+      {
+        "key": "FlatModifier",
+        "selector": [
+          "turret-weapon-damage"
+        ],
+        "value": "@actor.flags.system.turret.damage.strikeBonus",
+        "damageCategory": "persistent",
+        "damageType": "acid",
+        "predicate": [
+          "arrays:disintegrator",
+          {
+            "gte": [
+              "self:level",
+              5
+            ]
+          }
+        ],
+        "critical": true,
+        "hideIfDisabled": true,
+        "label": "Critical Specialization"
+      },
+      {
+        "key": "Note",
+        "text": "The target takes @Damage[1d6[acid,persistent]]. You gain an item bonus to this acid damage equal to the weapon's item bonus to attack rolls.",
+        "predicate": [
+          "arrays:disintegrator",
+          {
+            "gte": [
+              "self:level",
+              5
+            ]
+          }
+        ],
+        "selector": [
+          "area-denial-turret-cone-damage",
+          "area-denial-turret-line-damage"
+        ],
+        "title": "Critical Specialization"
+      },
+      {
+        "key": "Note",
+        "selector": [
+          "turret-weapon-damage"
+        ],
+        "title": "Critical Specialization",
+        "outcome": [
+          "criticalSuccess"
+        ],
+        "text": "The target must succeed at a @Check[fortitude|dc:resolve(@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level + 10)] or be @UUID[Compendium.sf2e.conditions.Item.TkIyaNPgTZFBCCuh]{Dazzled} until the start of your next turn",
+        "predicate": [
+          "arrays:laser-beam",
+          {
+            "gte": [
+              "self:level",
+              5
+            ]
+          }
+        ]
+      },
+      {
+        "key": "Note",
+        "selector": [
+          "turret-weapon-damage"
+        ],
+        "title": "Critical Specialization",
+        "outcome": [
+          "criticalSuccess"
+        ],
+        "text": "The target must succeed at a @Check[fortitude|dc:resolve(@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level + 10)] or be @UUID[Compendium.sf2e.conditions.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute",
+        "predicate": [
+          "arrays:thunderclap",
+          {
+            "gte": [
+              "self:level",
+              5
+            ]
+          }
+        ]
+      },
+      {
+        "key": "Note",
+        "selector": [
+          "turret-weapon-damage"
+        ],
+        "title": "Critical Specialization",
+        "outcome": [
+          "criticalSuccess"
+        ],
+        "text": "The target must succeed at a @Check[fortitude|dc:resolve(@actor.abilities.int.mod + ternary(gte(@actor.level, 17), 6, ternary(gte(@actor.level, 9), 4, 2)) + @actor.level + 10)] or be @UUID[Compendium.sf2e.conditions.Item.dfCMdR4wnpbYNTix]{Stunned 1}",
+        "predicate": [
+          "arrays:volt-thrower",
+          {
+            "gte": [
+              "self:level",
+              5
+            ]
+          }
+        ]
+      },
+      {
+        "key": "Note",
+        "selector": [
+          "turret-weapon-damage"
+        ],
+        "title": "Critical Specialization",
+        "outcome": [
+          "criticalSuccess"
+        ],
+        "text": "This weapon freezes part of the target, making it hard for them to move their body. The target is @UUID[Compendium.sf2e.conditions.Item.i3OJZU2nk64Df3xm]{Clumsy 1} until the start of your next turn.",
+        "predicate": [
+          "arrays:zero-emitter",
+          {
+            "gte": [
+              "self:level",
+              5
+            ]
+          }
+        ]
+      }
+    ],
+    "slug": "weapon-arrays",
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "actionType": {
+      "value": "passive"
+    },
+    "actions": {
+      "value": null
+    },
+    "category": null,
+    "deathNote": false
+  },
+  "_id": "T8uQ2B0zEsMLKx0Q",
+  "img": "systems/sf2e/icons/actions/Passive.webp",
+  "sort": 300000,
+  "ownership": {
+    "default": 0,
+    "KQrTwr8CCXT32xPE": 3
+  },
+  "flags": {},
+  "_stats": {
+    "coreVersion": "14.364",
+    "systemId": "sf2e",
+    "systemVersion": "1.2.0",
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null
+  },
+  "_key": "!items!T8uQ2B0zEsMLKx0Q"
+}

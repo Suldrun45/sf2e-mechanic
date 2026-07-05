@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.2.0
+Add automation to Turret Attacks Range and Area Fire Save DCs
+
 ## Version 0.1.2
 Add automation to apply automatically Multidisciplinary Mechanic to Mines
 
