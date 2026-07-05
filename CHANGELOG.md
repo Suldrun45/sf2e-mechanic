@@ -2,7 +2,7 @@
 
 ## Version 0.2.0
 Add automation to Turret Attacks Range and Area Fire Save DCs
-=======
+
 ## Version 0.1.3
 Refactor Expansive Array
 
